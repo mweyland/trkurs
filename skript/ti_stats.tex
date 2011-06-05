@@ -50,6 +50,7 @@
 \includegraphics{eps/titlepage3}
 \end{center}
 \newpage
+
 \section{Vorwort}
 Dieses Skript beschreibt den sinnvollen Umgang mit den Taschenrechner TI-89,
 TI-89 Titanium, TI-92 Plus und TI-Voyage\texttrademark~200 der Firma Texas
@@ -251,7 +252,7 @@ Berechnungen übernimmt. Diese Software ist allerdings nicht zwingend auf dem
 Taschenrechner installiert. Sie kann aber kostenlos von der Texas Instruments
 Webseite\footnote{\url{http://education.ti.com/educationportal/downloadcenter/SoftwareDetail.do?website=US&tabId=1&appId=189}}
 heruntergeladen und mit einem Kabel auf den Taschenrechner überspielt
-werden. Einfacher ist abber das Übertragen mit Hilfe eines anderen
+werden. Einfacher ist aber das Übertragen mit Hilfe eines anderen
 Taschenrechners, auf dem das Programm bereits installiert ist. Unter Umständen
 muss zusätzlich zur Software auch eine neuere Version des
 Taschenrechner-Betriebssystems heruntergeladen und installiert werden.
@@ -294,7 +295,7 @@ gestrichelte Linie (\texttt{-------}) plaziert werden. Nach der Betätigung von
 die gestrichelte Linie wandert um eine Zeile nach unten und erwartet direkt die
 nächste Eingabe. Eine ganze Spalte kann gelöscht werden, indem der Cursor auf
 die Spalten-Überschrift (z.B. \texttt{list1}) plaziert und anschliessend
-\keystroke{CLEAR} und \keystroke{ENTER} gedrückt wird. Ausserdem kann man eine
+\keystroke{CLEAR} gefolgt von \keystroke{ENTER} gedrückt wird. Ausserdem kann man eine
 Spalte mit einer Berechnung aus Zahlen von einer anderen Spalte befüllen. In der
 Abbildung wird beispielsweise von jeder Zahl aus der Spalte \texttt{list1} der
 Spaltenmittelwert abgezogen und das Resultat in der Spalte \texttt{list2}
@@ -328,7 +329,7 @@ unverändert gelassen werden.
 \begin{window}[0,l,{\includegraphics{eps/1vartable}},{}]
 Nach der Betätigung von \keystroke{ENTER} erscheint die Tabelle mit den
 Messgrössen. Die meisten Einträge sind selbsterklärend. Mit $\sum x^2$ ist
-$\sum\left(x^2\right)$ und nicht etwa $\sum(x)^2$ gemeint (d.h. Summe der
+$\sum\left(x^2\right)$ und nicht etwa $\left(\sum x\right)^2$ gemeint (d.h. Summe der
 Quadrate und nicht Quadrat der Summe). \texttt{Sx} ist die empirische
 Standardabweichung mit Nenner $n-1$ und $\sigma x$ ist die Standardabweichung
 der Grundgesamtheit mit Nenner $n$, hier ist also Vorsicht geboten. Ausserdem
@@ -390,7 +391,7 @@ Alle unterstützten Tests sind im Menü \keystroke{F6} abrufbar.
 \subsubsection{One Sample T-Test}
 \begin{window}[0,l,{\includegraphics{eps/tchoose}},{}]
 Der One Sample T-Test kann im Menü \keystroke{F6} mit \texttt{2:T-Test\ldots}
-aufgerufen auf zwei verschiedene Arten durchgeführt werden. Entweder wurden der
+aufgerufen und auf zwei verschiedene Arten durchgeführt werden. Entweder wurden der
 Stichproben-Mittelwert \texttt{$\bar{x}$} und die empirische Standardabweichung
 \texttt{Sx} schon berechnet oder sind gegeben, oder sie können direkt aus einer
 Liste berechnet werden. Im ersten Fall ist im Dialogfeld in der Abbildung
@@ -439,8 +440,8 @@ Differenzen (z.B. \texttt{list2-list1}) arbeiten.
 
 \subsection{Konfidenzintervalle}
 \begin{window}[0,l,{\includegraphics{eps/ki2}},{}]
-Im Menü \keystroke{F7} lassen sich Dialogfelder aufrufen, mit denen man
-Konfidenzintervalle berechnen lassen kann. Je nach Aufgabenstellung wählt man
+Im Menü \keystroke{F7} lassen sich Dialogfelder aufrufen, mit denen 
+Konfidenzintervalle berechnet werden können. Je nach Aufgabenstellung wählt man
 \texttt{2:TInterval\ldots} für den Einstichproben-Fall und
 \texttt{4:2SampleTInt\ldots} für den Zweistichproben-Fall. Die Daten lassen sich
 dabei genau wie bei den T-Tests eingeben -- bei gegebenen Schätzungen mit
@@ -499,8 +500,10 @@ berechnen. Dabei stehen zwei Formen zu Verfügung, nämlich
 \texttt{1:LinReg(a+bx)} sowie \texttt{2:LinReg(ax+b)}. Der Unterschied zwischen
 diesen beiden Formen ist lediglich die Bezeichnung der Variablen. Im ersten Fall
 ist $a$ der y-Achsenabschnitt und $b$ die Steigung, im zweiten Fall ist es
-umgekehrt. Üblicherweise wird die zweite Notation verwendet, deshalb ist es
-angebracht, \texttt{2:LinReg(ax+b)} zu wählen.
+umgekehrt. Hierbei bietet es sich an, diejenige der beiden Varianten zu wählen, in der die Parameter $a$ und $b$ den Parametern
+$\alpha$ und $\beta$ der jeweiligen Aufgabe entsprechen.
+%Üblicherweise wird die zweite Notation verwendet, deshalb ist es
+%angebracht, \texttt{2:LinReg(ax+b)} zu wählen.
 \end{window}
 
 \begin{window}[0,l,{\includegraphics{eps/lrdiag}},{}]
