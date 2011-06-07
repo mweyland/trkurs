@@ -1,7 +1,7 @@
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
-%\usepackage{pnup}
-%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=3mm]
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+\usepackage{pnup}
+\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=3mm]
 \mode<presentation>
 {
     %\usetheme{Darmstadt}
@@ -43,7 +43,7 @@
 
 \author{Mathias Weyland}
 
-\date{4. -- 11. Juni 2010}
+\date{7. -- 15. Juni 2011}
 
 \AtBeginSection[]
 {
@@ -68,6 +68,7 @@
 \item Navigieren mit den Pfeiltasten
 \item Eingabe der Daten auf der gestrichelten Linie
 \item Löschen einer Spalte durch Plazieren auf der Spaltenüberschrift, anschliessend \keystroke{CLEAR} und \keystroke{ENTER}
+\item Bei Brüchen: \texttt{EXACT}-Mode ausschalten.
 \end{itemize}
 \end{frame}
 
@@ -83,21 +84,23 @@
 \end{itemize}
 \end{frame}
 
-%\begin{frame}{Statistische Messgrössen}
-%\begin{beamerboxesrounded}[shadow]{Aufgabe 105, Serie 10}
-%Von einer Grasart wurde anhand einer Stichprobe die Länge des Halms (in mm)
-%bestimmt:
-%$$
-%214,\;  212,\;  198,\;  186,\;  189,\;  216,\;  205,\;  202,\;  188,\;  199
-%$$
-%
-%\begin{outline}
-%\item Schätzen Sie Erwartungswert, Varianz und Standardfehler für die Grundgesamtheit.
-%\item \dots
-%\end{outline}
-%\end{beamerboxesrounded}
-%\end{frame}
-%
+\begin{frame}{Statistische Messgrössen}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 105, Serie 10}
+
+An einer Stichprobe von 12 Spatzen einer bestimmten Art wurden folgende
+Flügelspannweiten (in mm) gemessen:
+
+$$
+245,\; 240,\; 236,\; 243,\; 247,\; 238,\; 239,\; 248,\; 238,\; 240,\; 244,\; 237
+$$
+
+\begin{outline}
+\item Schätzen Sie Erwartungswert, Varianz und Standardfehler für die Grundgesamtheit.
+\item \dots
+\end{outline}
+\end{beamerboxesrounded}
+\end{frame}
+
 %\begin{frame}[fragile]{Messgrössen mit Häufigkeiten}
 %\begin{beamerboxesrounded}[shadow]{Aufgabe 104, Serie 10}
 %Eine Untersuchung ergab folgende Daten:
@@ -158,6 +161,58 @@
 %\end{beamerboxesrounded}
 %\end{frame}
 
+\section{Regression (I)}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F4} mit \texttt{Regressions$\RHD$}
+\item Zwei Modelle: \texttt{LinReg(a+bx)} oder \texttt{LinReg(ax+b)}
+\item Schätzung der Parameter und des Bestimmtheitsmasses $R^2$
+\item Test ob wahre Steigung $= 0$: \keystroke{F6} und \texttt{A:LinRegTTest}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Theorie}
+\begin{enumerate}
+\item Stichprobe: $(x_1,Y_1)\ldots(x_n, Y_n)$
+\item Berechne:
+$$
+\bar{Y},\; \bar{x},\; \sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x}),\; \sum_{i=1}^n(x_i-\bar{x})^2
+$$
+
+\item Berechne:
+$$
+\hat{\beta} = \frac{\sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x})}{\sum_{i=1}^n(x_i-\bar{x})^2},\;
+\hat{\alpha} = \bar{Y}-\hat{\beta}\bar{x}
+$$
+
+\item Geradengleichung $\hat{Y}=\hat{\alpha}+\hat{\beta}x_i$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Einfache Lineare Regression}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 134, Serie 12}
+Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus Aufgabe
+133:
+
+\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
+Insel & Bartolomé & Darwin & Seymour & Tortuga & Wolf\\\midrule
+$x_i$&
+1.24&2.33&1.84&1.24&2.85\\
+$y_i$&
+31&10&44&16&21\\
+\bottomrule
+\end{tabular}}\end{center}\vspace{2mm}
+
+\begin{itemize}
+\item[b)] Bestimmen Sie die Gleichung der Regressionsgeraden
+$y=\hat{\alpha}+\hat{\beta}x$ durch diese Punktpaare [\dots].
+\item[d)] Hat die Fläche Einfluss auf die Zielgrösse $Y$?
+\end{itemize}
+Testen Sie H0 : $\beta = 0$ gegen H1 : $\beta \ne 0$
+zum Signifikanzniveau 5\%.
+\end{beamerboxesrounded}
+\end{frame}
+
 \section{T-Test}
 \begin{frame}{Übersicht}
 \begin{itemize}
@@ -188,15 +243,19 @@ $$
 
 \begin{frame}{One Sample T-Test, Beispiel}
 \begin{beamerboxesrounded}[shadow]{Aufgabe 119, Serie 11}
-Zehn Tabletten wurden gewogen. Man erhielt folgende Gewichte in Gramm
-\begin{center}1.38, 1.88, 1.14, 1.78, 1.41, 1.33, 1.73, 1.70, 1.76, 1.58\end{center}
+Acht mit Mineralwasser gefüllte Halbliterflaschen der gleichen Herstellerfirma
+wurden gewogen. Man erhielt folgende Gewichte in Kilogramm
+
+\begin{center}
+0.49, 0.46, 0.45, 0.49, 0.47, 0.50, 0.51, 0.45
+\end{center}
 \begin{outline}
-\item Testen Sie die Hypothese, dass das Durchschnittsgewicht der Tabletten 1.35 g 
-beträgt (zweiseitiger Test).
-\item Es wird vermutet, die Tabletten wägen im Mittel mehr als 1.35 g. Testen Sie auch diese
+\item Testen Sie die Hypothese, dass das Durchschnittsgewicht der Flaschen 0.50
+kg beträgt (zweiseitiger Test).
+\item Es wird vermutet, die Tabletten wögen im Mittel mehr als 50 kg. Testen Sie auch diese
 Hypothese (einseitiger Test, wie sind H0 und H1 zu wählen?).
 \end{outline}
-Arbeiten Sie mit $\alpha$ = 5\%.
+Wählen Sie $\alpha$ = 5\%.
 \end{beamerboxesrounded}
 \end{frame}
 
@@ -204,7 +263,7 @@ Arbeiten Sie mit $\alpha$ = 5\%.
 \begin{enumerate}
 \item Stichprobe: $(a_1, b_1)\ldots (a_n,b_n)$, Prüfgrösse: $\mu_0$.
 \item Berechne $x_i=a_i-b_i$
-\item Führe One Sample  T-Test durch.
+\item Führe One Sample  T-Test mit $x_i$ durch.
 \end{enumerate}
 \vfill
 \textit{Hinweis auf Serie 11:} Ein t-Test für zwei gepaarte Stichproben ist ein
@@ -213,18 +272,26 @@ eine Stichprobe.
 \end{frame}
 
 \begin{frame}{Paired T-Test, Beispiel}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 123a), Serie 11}
-Acht Personen führten mit folgendem Ergebnis eine Diät durch:
+\begin{beamerboxesrounded}[shadow]{Aufgabe 123, Serie 11}
+Zehn Personen führten mit folgendem Ergebnis uber den gleichen Zeitraum eine
+Diät durch:
 
-\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|cccccccc}
-Person Nr.&1&2&3&4&5&6&7&8\\\hline
-Gewicht vorher&85.6&72.4&90.2&97.3&101.8&80.5&95.0&89.9\\
-Gewicht nachher&83.2&72.4&88.6&98.3&99.7&77.1&93.3&87.5\\
+\vspace{2mm}\begin{center}{\tiny\begin{tabular}{l|cccccccccc}
+Person Nr.&1&2&3&4&5&6&7&8&9&10\\\hline
+Gewicht vorher&
+103.7&95.2&87.6&97.7&76.8&110.9&85.1&95.3&101.3&99.8\\
+Gewicht nachher&
+99.8&92.3&88.2&96.5&74.0&106.4&83.4&95.0&100.0&95.3\\
 \end{tabular}}\end{center}\vspace{2mm}
 
 Die Erfinderin der Diät behauptet, dass diese tatsächlich eine Gewichtsabnahme
-bewirke. Prüfen Sie diese Behauptung mit einem statistischen Test nach, mit
-dem Signifikanzniveau 0.05.
+bewirke.  Prüfen Sie diese Behauptung mit einem statistischen Test nach, 
+\begin{outline}
+\item mit dem Signifikanzniveau 0.05, 
+\item mit dem Signifikanzniveau 0.0005. 
+\end{outline}
+
+Geben Sie dabei die Null- und die Alternativhypothese explizit an.
 \end{beamerboxesrounded}
 \end{frame}
 
@@ -248,19 +315,22 @@ $$
 
 \begin{frame}{Two Sample T-Test, Beispiel}
 \begin{beamerboxesrounded}[shadow]{Aufgabe 125, Serie 11}
-Zwei Gruppen von weiblichen Ratten erhielten stark bzw. schwach proteinhaltiges Futter.
+Zwei Gruppen von Ratten erhielten stark bzw. schwach proteinhaltiges Futter.
 Die Gewichtszunahmen in Gramm (vom 28. bis 84. Tag) waren bei der ersten Gruppe
-\begin{center}101, 112, 120, 160, 133, 109, 151\end{center}
+\begin{center}
+170, 112, 99, 120, 133, 152, 160, 146, 105,
+\end{center}
 und bei der zweiten Gruppe
-\begin{center}91, 130, 82, 93, 105, 117, 136, 80, 79, 91.\end{center}
+\begin{center}
+91, 130, 82, 93, 105, 117, 136, 80, 79, 91.
+\end{center}
 
 Prüfen Sie die Hypothese H0, dass die beiden Grundgesamtheiten gleiche
 Erwartungswerte haben, mit $\alpha = 0.05$.
 \end{beamerboxesrounded}
 \end{frame}
 
-
-\section{Konfidenzintervalle}
+\section[KI]{Konfidenzintervalle}
 \begin{frame}{Übersicht}
 \begin{itemize}
 \item Im Menü \keystroke{F7}
@@ -273,25 +343,22 @@ Erwartungswerte haben, mit $\alpha = 0.05$.
 
 \begin{frame}{KI mit \texttt{Stats}}
 \begin{beamerboxesrounded}[shadow]{Aufgabe 110, Serie 10}
-Eine Stichprobe von 101 Geburten ergab ein mittleres Geburtsgewicht von 3.38 kg mit
-einer empirischen Standardabweichung von 0.45 kg. Geben Sie das Vertrauensintervall für
-das mittlere Geburtsgewicht an 
-\begin{outline}
-\item mit $Q = 90\%$
-\item mit $Q = 99.9\%$.
-\end{outline}
+Eine Stichprobe von 101 Geburten ergab ein mittleres Geburtsgewicht von 3.38 kg
+mit einer empirischen Standardabweichung von 0.45 kg. Geben Sie das
+Konfidenzintervall für das mittlere Geburtsgewicht an mit Q = 90\%.
 \end{beamerboxesrounded}
 \end{frame}
 
 \begin{frame}{KI mit \texttt{Data}}
 \begin{beamerboxesrounded}[shadow]{Aufgabe 111, Serie 10}
-Von einigen Exemplaren einer Grasart wurde die Länge des Halms gemessen. Es ergaben
-sich die folgenden Werte (in mm)
+An einer Stichprobe von 12 Spatzen einer bestimmten Art wurden folgende
+Flügelspannweiten (in mm) gemessen (siehe Aufgabe 105):
+
 \begin{center}
-214, 212, 198, 186, 189, 216, 205, 202, 188, 199.
+245, 240, 236, 243, 247, 238, 239, 248, 238, 240, 244, 237
 \end{center}
 
-Bestimmen Sie das Konfidenzintervall für die mittlere Länge der Halme dieser Art 
+Bestimmen Sie das Konfidenzintervall für die mittlere Flügelspannweite
 \begin{outline}
 \item mit $Q = 90\%$
 \item mit $Q = 80\%$.
@@ -334,57 +401,32 @@ $$
 
 \begin{frame}{Einfache Varianzanalyse}
 \begin{beamerboxesrounded}[shadow]{Aufgabe 130, Serie 12}
-Wir messen die Durchmesser der Häuschen einer Schneckenart auf drei verschiedenen
-Wiesen. Pro Wiese vermessen wir vier Schnecken und notieren die erhaltenen Werte (in
-cm) in die folgende Tabelle:
+Wir messen das Gewicht von Moorfröschen (\textit{Rana arvalis}) an drei verschiedenen
+Weiern. Pro Weier vermessen wir vier Moorfrösche und notieren die erhaltenen
+Werte (in g) in die folgende Tabelle:
 
 \vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{ccc}\toprule
-Wiese 1 & Wiese 2 & Wiese 3\\\midrule
- 1.67 &  1.11 &  1.74\\
- 1.23 &  1.61 &  1.62\\
- 1.44 &  1.42 &  1.55\\
- 1.53 &  1.52 &  1.89\\\bottomrule
-\end{tabular}}\end{center} \vspace{2mm}
+Weier 1 & Weier 2 & Weier 3\\\midrule
+15.3& 17.2& 13.2\\
+16.1& 15.8& 15.1\\
+15.8& 16.4& 14.9\\
+16.3& 16.9& 16.2\\
+\bottomrule
+\end{tabular}}\end{center}\vspace{2mm}
 
-Unterscheiden sich die Schnecken dieser Art hinsichlich der Häuschendurchmesser auf den
-verschiedenen Wiesen? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse
-durch. Wählen Sie als Signifikanzniveau $\alpha$ = 5\%.
+Unterscheiden sich die Moorfrösche hinsichlich ihres Gewichtes je nachdem an
+welchem Weier sie leben? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse
+durch. Wählen Sie als Signifikanzniveau $\alpha = 5\%$.
 \end{beamerboxesrounded}
 \end{frame}
 
-\section{Lineare Regression}
-\begin{frame}{Übersicht}
-\begin{itemize}
-\item Im Menü \keystroke{F4} mit \texttt{Regressions$\RHD$}
-\item Zwei Modelle: \texttt{LinReg(a+bx)} oder \texttt{LinReg(ax+b)}
-\item Schätzung der Parameter und des Bestimmtheitsmasses $R^2$
-\item Test ob wahre Steigung $= 0$: \keystroke{F6} und \texttt{A:LinRegTTest}
-\end{itemize}
-\end{frame}
+\section{Regression (II)}
 
-\begin{frame}{Theorie}
-\begin{enumerate}
-\item Stichprobe: $(x_1,Y_1)\ldots(x_n, Y_n)$
-\item Berechne:
-$$
-\bar{Y},\; \bar{x},\; \sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x}),\; \sum_{i=1}^n(x_i-\bar{x})^2
-$$
-
-\item Berechne:
-$$
-\hat{\beta} = \frac{\sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x})}{\sum_{i=1}^n(x_i-\bar{x})^2},\;
-\hat{\alpha} = \bar{Y}-\hat{\beta}\bar{x}
-$$
-
-\item Geradengleichung $\hat{Y}=\hat{\alpha}+\hat{\beta}x_i$
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Theorie (Fortsetzung, Inferenz)}
+\begin{frame}{Theorie (Inferenz)}
 \begin{enumerate}
 \item Berechne:
 $$
-\hat{\sigma}^2 = \frac{1}{n-2}\sum_{i=1}^n (Y_i-\hat{Y})^2
+\hat{\sigma}^2 = \frac{1}{n-2}\sum_{i=1}^n (Y_i-\hat{Y}_i)^2
 $$
 \item Berechne für $\mathcal{H}_0: \beta=b$:
 $$
@@ -396,23 +438,29 @@ $$
 
 \begin{frame}{Einfache Lineare Regression}
 \begin{beamerboxesrounded}[shadow]{Aufgabe 134, Serie 12}
-Gegeben seien folgende Messwerte:
+Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus Aufgabe
+133:
 
-\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|cccccccccc}
-xi&1&1.5&3&3.5&4&6&7.5&8&9.5&10\\\midrule
-yi&2&2.5&4&0&1.5&7&6&10&5.5&9.5 \\
+\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
+Insel & Bartolomé & Darwin & Seymour & Tortuga & Wolf\\\midrule
+$x_i$&
+1.24&2.33&1.84&1.24&2.85\\
+$y_i$&
+31&10&44&16&21\\
+\bottomrule
 \end{tabular}}\end{center}\vspace{2mm}
 
 \begin{itemize}
 \item[b)] Bestimmen Sie die Gleichung der Regressionsgeraden
 $y=\hat{\alpha}+\hat{\beta}x$ durch diese Punktpaare [\dots].
-\item[d)] Offenbar hat die X-Grösse Einfluss auf die Zielgrösse Y. Was sagt hier der Test (H0 :
-$\beta = 0, \alpha = 5\%$)?
+\item[d)] Hat die Fläche Einfluss auf die Zielgrösse $Y$?
 \end{itemize}
+Testen Sie H0 : $\beta = 0$ gegen H1 : $\beta \ne 0$
+zum Signifikanzniveau 5\%.
 \end{beamerboxesrounded}
 \end{frame}
 
-\section{$\chi^2$-Test}
+%\section{$\chi^2$-Test}
 %\begin{frame}{$\chi^2$-Test auf gegebene Verteilung}
 %\begin{beamerboxesrounded}[shadow]{Aufgabe 127, Serie 12}
 %In einem grossen Wald mit gleichartigem Gelände und Baumbestand wird das
@@ -428,52 +476,69 @@ $\beta = 0, \alpha = 5\%$)?
 %\end{beamerboxesrounded}
 %\end{frame}
 
-\begin{frame}{Übersicht (Test auf Unabhängigkeit)}
-\begin{itemize}
-\item Im Menü \keystroke{F6} mit \texttt{8:Chi2 2-way}
-\item Kontingenztafel als Matrix eingeben:
-\begin{itemize}
-\item Zeileneinträge mit Kommata (\texttt{,}) trennen.
-\item Zeilen mit eckigen Klammern umfassen.
-\item Alles durch ein weiteres Paar eckige Klammern umfassen.
-\end{itemize}
-Beispiel:
+%\begin{frame}{Übersicht (Test auf Unabhängigkeit)}
+%\begin{itemize}
+%\item Im Menü \keystroke{F6} mit \texttt{8:Chi2 2-way}
+%\item Kontingenztafel als Matrix eingeben:
+%\begin{itemize}
+%\item Zeileneinträge mit Kommata (\texttt{,}) trennen.
+%\item Zeilen mit eckigen Klammern umfassen.
+%\item Alles durch ein weiteres Paar eckige Klammern umfassen.
+%\end{itemize}
+%Beispiel:
+%
+%\begin{center}
+%$\begin{bmatrix}1 & 2\\ 3 & 4\\\end{bmatrix}\Leftrightarrow$\texttt{[[1,2][3,4]]} 
+%\end{center}
+%
+%\item Matrix der erwarteten Werte kann abgespeichert werden.
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Übersicht (Test auf Unabhängigkeit)}
+%\begin{enumerate}
+%\item Kontingenztafel der Häufigkeiten $N_{ij}$ aufstellen $\Rightarrow$ $m$ Zeilen und $r$ Spalten.
+%\item Summe $N$ aller Häufigkeiten berechnen.
+%\item Randhäufigkeiten $N_{i.}$ und $N_{j.}$ berechnen.
+%\item Erwartete Werte mit
+%$$
+%E_{ij}=\frac{n_{.i}n_{j.}}{n}
+%$$
+%berechnen.
+%\item
+%$$
+%u=\sum_{i,j}\frac{(N_{ij}-E_{ij})^2}{E_{ij}}
+%$$
+%\item Inferenz mit Tabelle oder p-Wert. ($u\sim \chi^2_{(m-1)(r-1)}$).
+%\end{enumerate}
+%\end{frame}
+%
+%\begin{frame}{$\chi^2$-Test auf Unabhängigkeit}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 127, Serie 12}
+%Am 27. Januar 1987 berichtete die New York Times auf der Titelseite von den Resultaten
+%einer Studie uber die präventive Wirkung von Aspirin gegen Herzinfarkte bei Männern
+%mittleren Alters. Für die Studie wurden 22071 Männer mittleren Alters zufällig je einer
+%von zwei Gruppen zugeordnet. Der einen Gruppe wurde Aspirin verabreicht, der anderen
+%ein Placebo. Von 11037 Personen, die Aspirin eingenommen hatten, bekamen 104 einen
+%Herzinfarkt; von den 11034 Personen, welchen ein Placebo verabreicht wurde, erlitten 189
+%einen Herzinfarkt. Besteht ein signifikanter Unterschied ($\alpha = 0.001$)?
+%\end{beamerboxesrounded}
+%\end{frame}
 
-\begin{center}
-$\begin{bmatrix}1 & 2\\ 3 & 4\\\end{bmatrix}\Leftrightarrow$\texttt{[[1,2][3,4]]} 
-\end{center}
-
-\item Matrix der erwarteten Werte kann abgespeichert werden.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Übersicht (Test auf Unabhängigkeit)}
+\appendix
+\section*{MAT191}
+\begin{frame}{Inhaltsverzeichnis MAT191}
 \begin{enumerate}
-\item Kontingenztafel der Häufigkeiten $N_{ij}$ aufstellen $\Rightarrow$ $m$ Zeilen und $r$ Spalten.
-\item Summe $N$ aller Häufigkeiten berechnen.
-\item Randhäufigkeiten $N_{i.}$ und $N_{j.}$ berechnen.
-\item Erwartete Werte mit
-$$
-E_{ij}=\frac{n_{.i}n_{j.}}{n}
-$$
-berechnen.
-\item
-$$
-u=\sum_{i,j}\frac{(N_{ij}-E_{ij})^2}{E_{ij}}
-$$
-\item Inferenz mit Tabelle oder p-Wert. ($u\sim \chi^2_{(m-1)(r-1)}$).
+\item Die einfache Varianzanalyse (ANOVA);
+\item Die einfache lineare Regression, mehrfache Regression, polynomiale Regression;
+\item Die zweifache ANOVA (additiv und mit einer Wechselwirkung);
+\item Die hierarchische ANOVA (feste und zufällige Effekte);
+\item Die Covarianzanalyse mittels einer multiplen Regression;
+\item Die nichtparametrischen Verfahren;
+\item Relative Häufigkeiten als Daten;
+\item Die logistische Regression;
+\item Die Analyse von Ueberlebensdaten (Survival Analysis).
 \end{enumerate}
-\end{frame}
-
-\begin{frame}{$\chi^2$-Test auf Unabhängigkeit}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 127, Serie 12}
-Am 27. Januar 1987 berichtete die New York Times auf der Titelseite von den Resultaten
-einer Studie uber die präventive Wirkung von Aspirin gegen Herzinfarkte bei Männern
-mittleren Alters. Für die Studie wurden 22071 Männer mittleren Alters zufällig je einer
-von zwei Gruppen zugeordnet. Der einen Gruppe wurde Aspirin verabreicht, der anderen
-ein Placebo. Von 11037 Personen, die Aspirin eingenommen hatten, bekamen 104 einen
-Herzinfarkt; von den 11034 Personen, welchen ein Placebo verabreicht wurde, erlitten 189
-einen Herzinfarkt. Besteht ein signifikanter Unterschied ($\alpha = 0.001$)?
-\end{beamerboxesrounded}
+Ausserdem wird eine Einführung in R gegeben.
 \end{frame}
 \end{document}
