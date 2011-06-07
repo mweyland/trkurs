@@ -1,0 +1,479 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+%\usepackage{pnup}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=3mm]
+\mode<presentation>
+{
+    %\usetheme{Darmstadt}
+    \usetheme{Frankfurt}
+    %\usetheme{Singapore}
+    \usecolortheme{crane}
+    \definecolor{craneblue}{RGB}{60,0,0}
+%    \usecolortheme{seahorse}
+    \setbeamercovered{transparent}
+    \setbeamertemplate{items}[triangle]
+    \setbeamertemplate{enumerate items}[default]
+
+}
+
+
+\usepackage[german]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{booktabs}
+\setcounter{tocdepth}{2}
+\newlength{\tikey}
+\newcommand{\keystroke}[1]{\settowidth{\tikey}{\scriptsize #1}\psframebox[framearc=0.2]{\parbox{\tikey}{\scriptsize #1}}}
+
+\usepackage{outline}%
+\def\labeloutlni{\theoutlni}%
+\def\theoutlni{\protect{\alph{outlni})}}%
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{pstricks}
+\usepackage{txfonts}
+\usepackage{wasysym}
+
+%\usepackage{tikz}
+%\usebackgroundtemplate{%
+%\begin{tikzpicture}
+%  \node [rotate=30,scale=8.25,color=gray!20] at (current page.center) {DRAFT};
+%\end{tikzpicture}}
+\title{Taschenrechnerkurs für MAT183, Teil 2}
+
+\author{Mathias Weyland}
+
+\date{4. -- 11. Juni 2010}
+
+\AtBeginSection[]
+{
+\subsection{}
+  \begin{frame}<beamer>
+    \begin{beamerboxesrounded}[shadow]{\inserttitle}
+      \insertsection
+    \end{beamerboxesrounded}
+  \end{frame}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\begin{document}
+
+\frame{\maketitle}
+
+
+\section{Navigation}
+\begin{frame}{Erste Schritte mit dem Stats List Editor}
+\begin{itemize}
+\item Starten mit \keystroke{APPS}
+\item Navigieren mit den Pfeiltasten
+\item Eingabe der Daten auf der gestrichelten Linie
+\item Löschen einer Spalte durch Plazieren auf der Spaltenüberschrift, anschliessend \keystroke{CLEAR} und \keystroke{ENTER}
+\end{itemize}
+\end{frame}
+
+\section{1/2-Var Stats}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F4}, \texttt{1-Var Stats} oder \texttt{2-Var Stats}
+\item Zum Berechnen von Messgrössen aus einer oder zwei Stichproben
+\item Arbeiten mit Häufigkeiten möglich
+\item Ausgabe: Stichprobenmittelwert, empirische Standardabweichung, Median etc.
+\item Alternative Quartildefinition!
+\item Vorsicht: \texttt{Sx $\ne\sigma$x}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Statistische Messgrössen}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 105, Serie 10}
+%Von einer Grasart wurde anhand einer Stichprobe die Länge des Halms (in mm)
+%bestimmt:
+%$$
+%214,\;  212,\;  198,\;  186,\;  189,\;  216,\;  205,\;  202,\;  188,\;  199
+%$$
+%
+%\begin{outline}
+%\item Schätzen Sie Erwartungswert, Varianz und Standardfehler für die Grundgesamtheit.
+%\item \dots
+%\end{outline}
+%\end{beamerboxesrounded}
+%\end{frame}
+%
+%\begin{frame}[fragile]{Messgrössen mit Häufigkeiten}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 104, Serie 10}
+%Eine Untersuchung ergab folgende Daten:
+%\begin{center}\begin{tabular}{l|rrrrrrrr}\toprule
+%Messwert:          &15& 17& 19& 25& 30& 14& 29& 38\\
+%Absolute Häufigkeit& 2&  6&  4& 10&  7&  2&  1&  3\\\bottomrule
+%\end{tabular}\end{center}
+%
+%Schätzen Sie Erwartungswert, Varianz und Standardabweichung der zugehörigen
+%Grundgesamtheit.
+%\end{beamerboxesrounded}
+%\end{frame}
+
+\section{Listen}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Formel in der Spaltenüberschrift eingeben, z.B. \texttt{list2=list1-mean(list1)}
+\item Falls Bruch angegeben wird: \keystroke{$\Diamondblack$}~\keystroke{ENTER}
+\item Gänsefüsschen (\texttt{"}) für automatische Korrektur
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Relative Häufigkeiten}
+%\begin{beamerboxesrounded}[shadow]{Eigene Aufgabe}
+%Berechnen Sie die relativen Häufigkeiten aus den absoluten Häufigkeiten der letzten Aufgabe.
+%\end{beamerboxesrounded}
+%\end{frame}
+
+%\section{Verteilungen}
+%\begin{frame}{Übersicht}
+%\begin{itemize}
+%\item Im Menü \keystroke{F5}
+%\item Dichtefunktion: PDF
+%\item Wahrscheinlichkeitsverteilung: CDF
+%\item Parameter angeben
+%\item Die Grenzen der CDF angeben
+%\item Freiheitsgrade angeben
+%\item Für $t-$, $F-$, $\chi^2-$ und $\mathcal{N}-$Verteilung
+%\item Inverse = Quantilfunktion
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Wahrscheinlichkeitsverteilungen, p. 10f}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 94, Serie 8}
+%Die Länge (in mm) von Raupen einer bestimmten Art sei normalverteilt mit $\mu = 30$ und
+%$\sigma = 5$. Es werden 240 Raupen untersucht. Wieviele davon erwarten Sie
+%\begin{enumerate}[a)]
+%\item mit einer Länge $\le$ 25 mm
+%\item mit einer Länge zwischen 28 und 35 mm?
+%\end{enumerate}
+%\end{beamerboxesrounded}
+%\end{frame}
+%
+%\begin{frame}{Inverse t-Verteilung, p. 10f}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 109a), Serie 10}
+%Die Zufallsgrösse T sei t-verteilt mit Freiheitsgrad $\nu = 15$. Bestimmen Sie
+%mit Hilfe einer Tabelle die Zahl t so, dass $P[T \le t] = 0.95$ ist.
+%\end{beamerboxesrounded}
+%\end{frame}
+
+\section{T-Test}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F6}
+\item One Sample-, Two Sample und Paired T-Test
+\item Mit Schätzern (\texttt{Stats}) oder Daten (\texttt{Data})
+\item Eingabe der Prüfgrösse $\mu_0$ und der \textbf{Alternativ}-Hypothese
+\item Ausgabe von t- und p-Wert sowie $\bar{x}$, $n$ und empirische Standardabweichung
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One Sample T-Test, Theorie}
+\begin{enumerate}
+\item Stichprobe: $x_1\ldots x_n$, Prüfgrösse: $\mu_0$.
+\item Berechne:
+$$
+\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i,\;
+s=\sqrt{\frac{1}{n-1}\sum_{x=1}^{n}(x_i-\bar{x})^2},\;
+\nu=n-1
+$$
+\item Berechne:
+$$
+t_\text{obs}=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+$$
+\item Inferenz mit Tabelle oder p-Wert. ($t_\text{obs}\sim T_\nu$).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{One Sample T-Test, Beispiel}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 119, Serie 11}
+Zehn Tabletten wurden gewogen. Man erhielt folgende Gewichte in Gramm
+\begin{center}1.38, 1.88, 1.14, 1.78, 1.41, 1.33, 1.73, 1.70, 1.76, 1.58\end{center}
+\begin{outline}
+\item Testen Sie die Hypothese, dass das Durchschnittsgewicht der Tabletten 1.35 g 
+beträgt (zweiseitiger Test).
+\item Es wird vermutet, die Tabletten wägen im Mittel mehr als 1.35 g. Testen Sie auch diese
+Hypothese (einseitiger Test, wie sind H0 und H1 zu wählen?).
+\end{outline}
+Arbeiten Sie mit $\alpha$ = 5\%.
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Paired T-Test, Theorie}
+\begin{enumerate}
+\item Stichprobe: $(a_1, b_1)\ldots (a_n,b_n)$, Prüfgrösse: $\mu_0$.
+\item Berechne $x_i=a_i-b_i$
+\item Führe One Sample  T-Test durch.
+\end{enumerate}
+\vfill
+\textit{Hinweis auf Serie 11:} Ein t-Test für zwei gepaarte Stichproben ist ein
+t-Test für die Differenzen der gepaarten Daten, also eigentlich ein t-Test für
+eine Stichprobe.
+\end{frame}
+
+\begin{frame}{Paired T-Test, Beispiel}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 123a), Serie 11}
+Acht Personen führten mit folgendem Ergebnis eine Diät durch:
+
+\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|cccccccc}
+Person Nr.&1&2&3&4&5&6&7&8\\\hline
+Gewicht vorher&85.6&72.4&90.2&97.3&101.8&80.5&95.0&89.9\\
+Gewicht nachher&83.2&72.4&88.6&98.3&99.7&77.1&93.3&87.5\\
+\end{tabular}}\end{center}\vspace{2mm}
+
+Die Erfinderin der Diät behauptet, dass diese tatsächlich eine Gewichtsabnahme
+bewirke. Prüfen Sie diese Behauptung mit einem statistischen Test nach, mit
+dem Signifikanzniveau 0.05.
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Two Sample T-Test, Theorie}
+\begin{enumerate}
+\item Stichproben: $x_1\ldots x_{n1}$ und $y_1\ldots y_{n2}$.
+\item Berechne: $\bar{x}$, $\bar{y}$, $s_1$ und $s_2$ wie üblich.
+\item Berechne: 
+$$
+\nu=n_1+n_2-2,\;
+s=\sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{\nu}}
+$$
+
+\item Berechne:
+$$
+t_\text{obs}=\frac{\bar{x}-\bar{y}}{s\sqrt{1/n_1+1/n_2}}
+$$
+\item Inferenz mit Tabelle oder p-Wert. ($t_\text{obs}\sim T_\nu$).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Two Sample T-Test, Beispiel}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 125, Serie 11}
+Zwei Gruppen von weiblichen Ratten erhielten stark bzw. schwach proteinhaltiges Futter.
+Die Gewichtszunahmen in Gramm (vom 28. bis 84. Tag) waren bei der ersten Gruppe
+\begin{center}101, 112, 120, 160, 133, 109, 151\end{center}
+und bei der zweiten Gruppe
+\begin{center}91, 130, 82, 93, 105, 117, 136, 80, 79, 91.\end{center}
+
+Prüfen Sie die Hypothese H0, dass die beiden Grundgesamtheiten gleiche
+Erwartungswerte haben, mit $\alpha = 0.05$.
+\end{beamerboxesrounded}
+\end{frame}
+
+
+\section{Konfidenzintervalle}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F7}
+\item \texttt{2:TInterval\ldots} für den Einstichproben-Fall und
+\item \texttt{4:2SampleTInt\ldots} für den Zweistichproben-Fall.
+\item Analog zu T-Tests
+\item \texttt{Stats} oder \texttt{Data}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{KI mit \texttt{Stats}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 110, Serie 10}
+Eine Stichprobe von 101 Geburten ergab ein mittleres Geburtsgewicht von 3.38 kg mit
+einer empirischen Standardabweichung von 0.45 kg. Geben Sie das Vertrauensintervall für
+das mittlere Geburtsgewicht an 
+\begin{outline}
+\item mit $Q = 90\%$
+\item mit $Q = 99.9\%$.
+\end{outline}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{KI mit \texttt{Data}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 111, Serie 10}
+Von einigen Exemplaren einer Grasart wurde die Länge des Halms gemessen. Es ergaben
+sich die folgenden Werte (in mm)
+\begin{center}
+214, 212, 198, 186, 189, 216, 205, 202, 188, 199.
+\end{center}
+
+Bestimmen Sie das Konfidenzintervall für die mittlere Länge der Halme dieser Art 
+\begin{outline}
+\item mit $Q = 90\%$
+\item mit $Q = 80\%$.
+\end{outline}
+\end{beamerboxesrounded}
+\end{frame}
+
+\section{ANOVA}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F6}: \texttt{C:ANOVA}
+\item Eingabe: Eine Spalte pro Gruppe
+\item Ausgabe: ANOVA-Tabelle sowie $F-$ und $p-$Wert
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Theorie}
+\begin{enumerate}
+\item Gegeben sind $k$ Gruppen, in der $i$-ten Gruppe $n_i$ Beobachtungen
+$y_{i\,1}, y_{i\,2}, \ldots, y_{i\,ni}$.
+\item Berechne:
+$$
+n=\sum_{i=1}^k n_i,\;
+\bar{Y}_{i.}=\frac{1}{n_i}\sum_{j=1}^{n_i}Y_{ij},\; 
+\bar{Y}_{..}=\frac{1}{n}\sum_{i=1}^k\sum_{j=1}^{n_i}Y_{ij}
+$$
+\item Berechne:
+$$
+MS_G=\frac{1}{k-1}\sum_{i=1}^k n_i(\bar{Y}_{i.}-\bar{Y}_{..})^2,\;
+MS_E=\frac{1}{n-k}\sum_{i=1}^k\sum_{j=1}^{n_i}(Y_{ij}-\bar{Y}_{i.})^2
+$$
+\item
+$$
+V=\frac{MS_G}{MS_E}
+$$
+\item Inferenz mit Tabelle oder p-Wert. ($V\sim F_{k-1,n-k}$).
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Einfache Varianzanalyse}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 130, Serie 12}
+Wir messen die Durchmesser der Häuschen einer Schneckenart auf drei verschiedenen
+Wiesen. Pro Wiese vermessen wir vier Schnecken und notieren die erhaltenen Werte (in
+cm) in die folgende Tabelle:
+
+\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{ccc}\toprule
+Wiese 1 & Wiese 2 & Wiese 3\\\midrule
+ 1.67 &  1.11 &  1.74\\
+ 1.23 &  1.61 &  1.62\\
+ 1.44 &  1.42 &  1.55\\
+ 1.53 &  1.52 &  1.89\\\bottomrule
+\end{tabular}}\end{center} \vspace{2mm}
+
+Unterscheiden sich die Schnecken dieser Art hinsichlich der Häuschendurchmesser auf den
+verschiedenen Wiesen? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse
+durch. Wählen Sie als Signifikanzniveau $\alpha$ = 5\%.
+\end{beamerboxesrounded}
+\end{frame}
+
+\section{Lineare Regression}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F4} mit \texttt{Regressions$\RHD$}
+\item Zwei Modelle: \texttt{LinReg(a+bx)} oder \texttt{LinReg(ax+b)}
+\item Schätzung der Parameter und des Bestimmtheitsmasses $R^2$
+\item Test ob wahre Steigung $= 0$: \keystroke{F6} und \texttt{A:LinRegTTest}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Theorie}
+\begin{enumerate}
+\item Stichprobe: $(x_1,Y_1)\ldots(x_n, Y_n)$
+\item Berechne:
+$$
+\bar{Y},\; \bar{x},\; \sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x}),\; \sum_{i=1}^n(x_i-\bar{x})^2
+$$
+
+\item Berechne:
+$$
+\hat{\beta} = \frac{\sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x})}{\sum_{i=1}^n(x_i-\bar{x})^2},\;
+\hat{\alpha} = \bar{Y}-\hat{\beta}\bar{x}
+$$
+
+\item Geradengleichung $\hat{Y}=\hat{\alpha}+\hat{\beta}x_i$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Theorie (Fortsetzung, Inferenz)}
+\begin{enumerate}
+\item Berechne:
+$$
+\hat{\sigma}^2 = \frac{1}{n-2}\sum_{i=1}^n (Y_i-\hat{Y})^2
+$$
+\item Berechne für $\mathcal{H}_0: \beta=b$:
+$$
+t_\text{obs}=\frac{\hat\beta-b}{\sqrt{\hat\sigma^2/\sum_{i=1}^n(x_i-\bar{x})^2}}
+$$
+\item Inferenz mit Tabelle oder p-Wert. ($t_\text{obs}\sim T_{n-2}$).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Einfache Lineare Regression}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 134, Serie 12}
+Gegeben seien folgende Messwerte:
+
+\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|cccccccccc}
+xi&1&1.5&3&3.5&4&6&7.5&8&9.5&10\\\midrule
+yi&2&2.5&4&0&1.5&7&6&10&5.5&9.5 \\
+\end{tabular}}\end{center}\vspace{2mm}
+
+\begin{itemize}
+\item[b)] Bestimmen Sie die Gleichung der Regressionsgeraden
+$y=\hat{\alpha}+\hat{\beta}x$ durch diese Punktpaare [\dots].
+\item[d)] Offenbar hat die X-Grösse Einfluss auf die Zielgrösse Y. Was sagt hier der Test (H0 :
+$\beta = 0, \alpha = 5\%$)?
+\end{itemize}
+\end{beamerboxesrounded}
+\end{frame}
+
+\section{$\chi^2$-Test}
+%\begin{frame}{$\chi^2$-Test auf gegebene Verteilung}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 127, Serie 12}
+%In einem grossen Wald mit gleichartigem Gelände und Baumbestand wird das
+%Vorkommen der Heidelbeere untersucht. Auf quadratischen Flächen von je 1 m$^2$
+%Grösse erhält man durch Auszählung der Pflanzen:
+%
+%\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|cccccccc} 
+%Anzahl der Planzen pro m$^2$&0&1&2&3&4&5&6&$\ge 7$\\\hline
+%Anzahl der Flächenstücke&15&18&11&4&1&0&1&0
+%\end{tabular}}\end{center}\vspace{2mm}
+%
+%Darf eine Poissonverteilung mit Erwartungswert 1.2 angenommen werden?
+%\end{beamerboxesrounded}
+%\end{frame}
+
+\begin{frame}{Übersicht (Test auf Unabhängigkeit)}
+\begin{itemize}
+\item Im Menü \keystroke{F6} mit \texttt{8:Chi2 2-way}
+\item Kontingenztafel als Matrix eingeben:
+\begin{itemize}
+\item Zeileneinträge mit Kommata (\texttt{,}) trennen.
+\item Zeilen mit eckigen Klammern umfassen.
+\item Alles durch ein weiteres Paar eckige Klammern umfassen.
+\end{itemize}
+Beispiel:
+
+\begin{center}
+$\begin{bmatrix}1 & 2\\ 3 & 4\\\end{bmatrix}\Leftrightarrow$\texttt{[[1,2][3,4]]} 
+\end{center}
+
+\item Matrix der erwarteten Werte kann abgespeichert werden.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Übersicht (Test auf Unabhängigkeit)}
+\begin{enumerate}
+\item Kontingenztafel der Häufigkeiten $N_{ij}$ aufstellen $\Rightarrow$ $m$ Zeilen und $r$ Spalten.
+\item Summe $N$ aller Häufigkeiten berechnen.
+\item Randhäufigkeiten $N_{i.}$ und $N_{j.}$ berechnen.
+\item Erwartete Werte mit
+$$
+E_{ij}=\frac{n_{.i}n_{j.}}{n}
+$$
+berechnen.
+\item
+$$
+u=\sum_{i,j}\frac{(N_{ij}-E_{ij})^2}{E_{ij}}
+$$
+\item Inferenz mit Tabelle oder p-Wert. ($u\sim \chi^2_{(m-1)(r-1)}$).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{$\chi^2$-Test auf Unabhängigkeit}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 127, Serie 12}
+Am 27. Januar 1987 berichtete die New York Times auf der Titelseite von den Resultaten
+einer Studie uber die präventive Wirkung von Aspirin gegen Herzinfarkte bei Männern
+mittleren Alters. Für die Studie wurden 22071 Männer mittleren Alters zufällig je einer
+von zwei Gruppen zugeordnet. Der einen Gruppe wurde Aspirin verabreicht, der anderen
+ein Placebo. Von 11037 Personen, die Aspirin eingenommen hatten, bekamen 104 einen
+Herzinfarkt; von den 11034 Personen, welchen ein Placebo verabreicht wurde, erlitten 189
+einen Herzinfarkt. Besteht ein signifikanter Unterschied ($\alpha = 0.001$)?
+\end{beamerboxesrounded}
+\end{frame}
+\end{document}
