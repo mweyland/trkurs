@@ -252,8 +252,8 @@ wurden gewogen. Man erhielt folgende Gewichte in Kilogramm
 \begin{outline}
 \item Testen Sie die Hypothese, dass das Durchschnittsgewicht der Flaschen 0.50
 kg beträgt (zweiseitiger Test).
-\item Es wird vermutet, die Tabletten wögen im Mittel mehr als 50 kg. Testen Sie auch diese
-Hypothese (einseitiger Test, wie sind H0 und H1 zu wählen?).
+\item Es wird vermutet, die Flaschen wögen im Mittel weniger als 0.50 kg.
+Testen Sie auch diese Hypothese (einseitiger Test, wie sind H0 und H1 zu wählen?).
 \end{outline}
 Wählen Sie $\alpha$ = 5\%.
 \end{beamerboxesrounded}
@@ -322,7 +322,7 @@ Die Gewichtszunahmen in Gramm (vom 28. bis 84. Tag) waren bei der ersten Gruppe
 \end{center}
 und bei der zweiten Gruppe
 \begin{center}
-91, 130, 82, 93, 105, 117, 136, 80, 79, 91.
+99, 102, 91, 125, 86, 137, 79.
 \end{center}
 
 Prüfen Sie die Hypothese H0, dass die beiden Grundgesamtheiten gleiche
@@ -377,7 +377,7 @@ Bestimmen Sie das Konfidenzintervall für die mittlere Flügelspannweite
 
 \begin{frame}{Theorie}
 \begin{enumerate}
-\item Gegeben sind $k$ Gruppen, in der $i$-ten Gruppe $n_i$ Beobachtungen
+\item Gegeben sind $k$ Gruppen, in der $i$-ten Gruppe $n_i$, Beobachtungen
 $y_{i\,1}, y_{i\,2}, \ldots, y_{i\,ni}$.
 \item Berechne:
 $$
@@ -387,14 +387,11 @@ n=\sum_{i=1}^k n_i,\;
 $$
 \item Berechne:
 $$
-MS_G=\frac{1}{k-1}\sum_{i=1}^k n_i(\bar{Y}_{i.}-\bar{Y}_{..})^2,\;
-MS_E=\frac{1}{n-k}\sum_{i=1}^k\sum_{j=1}^{n_i}(Y_{ij}-\bar{Y}_{i.})^2
+MS_G=\frac{1}{k-1}\underbrace{\sum_{i=1}^k n_i(\bar{Y}_{i.}-\bar{Y}_{..})^2}_{SS_G},\;
+MS_E=\frac{1}{n-k}\underbrace{\sum_{i=1}^k\sum_{j=1}^{n_i}(Y_{ij}-\bar{Y}_{i.})^2}_{SS_E}
 $$
-\item
-$$
-V=\frac{MS_G}{MS_E}
-$$
-\item Inferenz mit Tabelle oder p-Wert. ($V\sim F_{k-1,n-k}$).
+\item $V=\frac{MS_G}{MS_E}$
+\item Inferenz mit Tabelle oder p-Wert. ($V\sim F_{\underbrace{k-1}_{df_G},\underbrace{n-k}_{df_E}}$).
 \end{enumerate}
 \end{frame}
 
@@ -536,8 +533,7 @@ zum Signifikanzniveau 5\%.
 \item Die Covarianzanalyse mittels einer multiplen Regression;
 \item Die nichtparametrischen Verfahren;
 \item Relative Häufigkeiten als Daten;
-\item Die logistische Regression;
-\item Die Analyse von Ueberlebensdaten (Survival Analysis).
+\item Einführung in Maximum Likelihood.
 \end{enumerate}
 Ausserdem wird eine Einführung in R gegeben.
 \end{frame}
