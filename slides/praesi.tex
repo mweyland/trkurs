@@ -23,10 +23,9 @@
 \setcounter{tocdepth}{2}
 \newlength{\tikey}
 \newcommand{\keystroke}[1]{\settowidth{\tikey}{\scriptsize #1}\psframebox[framearc=0.2]{\parbox{\tikey}{\scriptsize #1}}}
-
 \usepackage{outline}%
 \def\labeloutlni{\theoutlni}%
-\def\theoutlni{\protect{\alph{outlni})}}%
+\def\theoutlni{\protect{(\alph{outlni})}}%
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumerate}
@@ -41,9 +40,9 @@
 %\end{tikzpicture}}
 \title{Taschenrechnerkurs für MAT183, Teil 2}
 
-\author{Mathias Weyland}
+\author{Ueli Hartmann\\Mathias Weyland}
 
-\date{7. -- 15. Juni 2011}
+\date{6. -- 13. Juni 2012}
 
 \AtBeginSection[]
 {
@@ -85,13 +84,15 @@
 \end{frame}
 
 \begin{frame}{Statistische Messgrössen}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 105, Serie 10}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 57, Serie 10}
 
-An einer Stichprobe von 12 Spatzen einer bestimmten Art wurden folgende
-Flügelspannweiten (in mm) gemessen:
+Der Geysir Old Faithful im Yellowstone-Nationalpark im Bundestaat Wyoming (USA)
+ist dafür bekannt, dass seine Eruptionen besonders häufig und regelmässig
+auftreten. Es wurden folgende Wartezeiten (in min) von einer Eruption zur
+nächsten gemessen:
 
 $$
-245,\; 240,\; 236,\; 243,\; 247,\; 238,\; 239,\; 248,\; 238,\; 240,\; 244,\; 237
+79,\; 54,\; 74,\; 62,\; 85,\; 55,\; 88,\; 85,\; 51,\; 85
 $$
 
 \begin{outline}
@@ -123,11 +124,18 @@ $$
 \end{itemize}
 \end{frame}
 
-%\begin{frame}{Relative Häufigkeiten}
-%\begin{beamerboxesrounded}[shadow]{Eigene Aufgabe}
-%Berechnen Sie die relativen Häufigkeiten aus den absoluten Häufigkeiten der letzten Aufgabe.
-%\end{beamerboxesrounded}
-%\end{frame}
+\begin{frame}{Arbeiten mit Listen}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 38, Serie 7}
+Die Verteilung einer diskreten Zufallsgrösse $X$ ist durch die folgende Tabelle gegeben:
+
+\begin{center}\begin{tabular}{c|ccccc}\toprule
+$x_i$ & -3 & -2 &  0 & 1 & 4\\\midrule
+$P[X = x_i ]$ &  0.1 & 0.3 & 0.3 & 0.2 & 0.1\\\bottomrule
+\end{tabular}\end{center}
+
+[\dots]
+\end{beamerboxesrounded}
+\end{frame}
 
 %\section{Verteilungen}
 %\begin{frame}{Übersicht}
@@ -181,35 +189,43 @@ $$
 
 \item Berechne:
 $$
-\hat{\beta} = \frac{\sum_{i=1}^n (Y_i-\bar{Y})(x_i-\bar{x})}{\sum_{i=1}^n(x_i-\bar{x})^2},\;
-\hat{\alpha} = \bar{Y}-\hat{\beta}\bar{x}
+\hat{\beta}_1 = \frac{\sum_{i=1}^n
+(Y_i-\bar{Y})(x_i-\bar{x})}{\sum_{i=1}^n(x_i-\bar{x})^2}=
+\frac{\sum_{i=1}^n \left(x_iY_i\right)-n\bar{x}\bar{Y}}{\sum_{i=1}^n \left(x_i^2\right)-n\bar{x}^2},\;
+\hat{\beta_0} = \bar{Y}-\hat{\beta}_1\bar{x}
 $$
 
-\item Geradengleichung $\hat{Y}=\hat{\alpha}+\hat{\beta}x_i$
+\item Geradengleichung $\hat{Y}=\hat{\beta}_0+\hat{\beta}_1 x_i$
+
+\item Korrelationskoeffizient $r = \frac{\sum_{i=1}^n
+    (Y_i-\bar{Y})(x_i-\bar{x})}{\sqrt{\sum_{i=1}^n(Y_i-\bar{Y})^2\sum_{i=1}^n(x_i-\bar{x})^2}}$
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Einfache Lineare Regression}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 134, Serie 12}
-Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus Aufgabe
-133:
+\begin{frame}{Einfache Lineare Regression, Parameterschätzung}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 71, Serie 12}
+Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus der
+vorherigen Aufgabe:
 
-\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
-Insel & Bartolomé & Darwin & Seymour & Tortuga & Wolf\\\midrule
+\begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
+Insel & Baltra & Eden & Isabela & Pinta & Santa Fé\\\midrule
 $x_i$&
-1.24&2.33&1.84&1.24&2.85\\
+ 346 & 71 & 1707 & 777 & 259\\
 $y_i$&
-31&10&44&16&21\\
+  58 & 8 & 347 & 104 & 62\\
 \bottomrule
-\end{tabular}}\end{center}\vspace{2mm}
+\end{tabular}}\end{center}
 
-\begin{itemize}
-\item[b)] Bestimmen Sie die Gleichung der Regressionsgeraden
-$y=\hat{\alpha}+\hat{\beta}x$ durch diese Punktpaare [\dots].
-\item[d)] Hat die Fläche Einfluss auf die Zielgrösse $Y$?
-\end{itemize}
-Testen Sie H0 : $\beta = 0$ gegen H1 : $\beta \ne 0$
-zum Signifikanzniveau 5\%.
+\begin{outline}
+\item $[\dots]$ Bestimmen Sie die Gleichung der Regressionsgeraden
+$y=\hat{\beta_0}+\hat{\beta_1}x$ [\dots].
+\textcolor{black!20}{\item Hat die Höhe der höchsten Erhebung Einfluss auf die Anzahl der Pflanzenarten?
+Testen Sie $\mathcal{H}_0: \beta_1 = 0$ gegen $\mathcal{H}_1: \beta_1 \ne 0$
+zum Signifikanzniveau 5\%.}
+
+\item Berechnen Sie den Korrelationskoeffizienten zwischen den Daten
+$(x_i)_{i=1}^5$ und $(y_i)_{i=1}^5$.
+\end{outline}
 \end{beamerboxesrounded}
 \end{frame}
 
@@ -235,65 +251,81 @@ s=\sqrt{\frac{1}{n-1}\sum_{x=1}^{n}(x_i-\bar{x})^2},\;
 $$
 \item Berechne:
 $$
-t_\text{obs}=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+t_\text{obs}=\frac{\bar{x}-\mu_0}{\frac{s}{\sqrt{n}}} = 
+\frac{\sqrt{n}\left(\bar{x}-\mu_0\right)}{s}
 $$
 \item Inferenz mit Tabelle oder p-Wert. ($t_\text{obs}\sim T_\nu$).
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{One Sample T-Test, Beispiel}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 119, Serie 11}
-Acht mit Mineralwasser gefüllte Halbliterflaschen der gleichen Herstellerfirma
-wurden gewogen. Man erhielt folgende Gewichte in Kilogramm
+\begin{frame}{One Sample T-Test mit \texttt{Data}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 64, Serie 11}
+Zehn Tabletten wurden gewogen. Man erhielt folgende Gewichte in Gramm
 
 \begin{center}
-0.49, 0.46, 0.45, 0.49, 0.47, 0.50, 0.51, 0.45
+1.50, 1.48, 1.49, 1.53, 1.48, 1.51, 1.57, 1.47, 1.45, 1.44 .
 \end{center}
+
 \begin{outline}
-\item Testen Sie die Hypothese, dass das Durchschnittsgewicht der Flaschen 0.50
-kg beträgt (zweiseitiger Test).
-\item Es wird vermutet, die Flaschen wögen im Mittel weniger als 0.50 kg.
-Testen Sie auch diese Hypothese (einseitiger Test, wie sind H0 und H1 zu wählen?).
+\item Testen Sie mit einem zweiseitigen Test die Hypothese, dass das
+Durchschnittsgewicht der Tabletten 1.5 g beträgt.
+\item Es  wird vermutet, die Tabletten wögen im Mittel weniger als 1.5 g. Testen Sie
+mit einem einseitigen Test auch diese Hypothese. Wie sind $\mathcal{H}_0$ und 
+$\mathcal{H}_1$ zu wählen?
 \end{outline}
-Wählen Sie $\alpha$ = 5\%.
+Arbeiten Sie sowohl bei (a) als auch bei (b) mit $\alpha = 5\%$.
 \end{beamerboxesrounded}
 \end{frame}
 
-\begin{frame}{Paired T-Test, Theorie}
-\begin{enumerate}
-\item Stichprobe: $(a_1, b_1)\ldots (a_n,b_n)$, Prüfgrösse: $\mu_0$.
-\item Berechne $x_i=a_i-b_i$
-\item Führe One Sample  T-Test mit $x_i$ durch.
-\end{enumerate}
-\vfill
-\textit{Hinweis auf Serie 11:} Ein t-Test für zwei gepaarte Stichproben ist ein
-t-Test für die Differenzen der gepaarten Daten, also eigentlich ein t-Test für
-eine Stichprobe.
-\end{frame}
+\begin{frame}{One Sample T-Test mit \texttt{Stats}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 61, Serie 11}
+Ein Werkstück sollte eine Länge von 200 mm haben. Eine Überprüfung einer
+Stichprobe von 25 Stück ergab eine durchschnittliche Länge von 198 mm mit einer
+empirischen Standardabweichung von 10 mm.
 
-\begin{frame}{Paired T-Test, Beispiel}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 123, Serie 11}
-Zehn Personen führten mit folgendem Ergebnis uber den gleichen Zeitraum eine
-Diät durch:
-
-\vspace{2mm}\begin{center}{\tiny\begin{tabular}{l|cccccccccc}
-Person Nr.&1&2&3&4&5&6&7&8&9&10\\\hline
-Gewicht vorher&
-103.7&95.2&87.6&97.7&76.8&110.9&85.1&95.3&101.3&99.8\\
-Gewicht nachher&
-99.8&92.3&88.2&96.5&74.0&106.4&83.4&95.0&100.0&95.3\\
-\end{tabular}}\end{center}\vspace{2mm}
-
-Die Erfinderin der Diät behauptet, dass diese tatsächlich eine Gewichtsabnahme
-bewirke.  Prüfen Sie diese Behauptung mit einem statistischen Test nach, 
 \begin{outline}
-\item mit dem Signifikanzniveau 0.05, 
-\item mit dem Signifikanzniveau 0.0005. 
+\item Testen Sie die Hypothese, dass die mittlere Länge aller produzierten Werkstücke 200 mm beträgt.
+\item Testen Sie die Frage, ob die Stücke im Mittel allenfalls zu kurz seien.
 \end{outline}
-
-Geben Sie dabei die Null- und die Alternativhypothese explizit an.
 \end{beamerboxesrounded}
 \end{frame}
+
+
+%\begin{frame}{Paired T-Test, Theorie}
+%\begin{enumerate}
+%\item Stichprobe: $(a_1, b_1)\ldots (a_n,b_n)$, Prüfgrösse: $\mu_0$.
+%\item Berechne $x_i=a_i-b_i$
+%\item Führe One Sample  T-Test mit $x_i$ durch.
+%\end{enumerate}
+%\vfill
+%\textit{Hinweis auf Serie 11:} Ein t-Test für zwei gepaarte Stichproben ist ein
+%t-Test für die Differenzen der gepaarten Daten, also eigentlich ein t-Test für
+%eine Stichprobe.
+%\end{frame}
+%
+%\begin{frame}{Paired T-Test, Beispiel}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 123, Serie 11}
+%Zehn Personen führten mit folgendem Ergebnis uber den gleichen Zeitraum eine
+%Diät durch:
+%
+%\vspace{2mm}\begin{center}{\tiny\begin{tabular}{l|cccccccccc}
+%Person Nr.&1&2&3&4&5&6&7&8&9&10\\\hline
+%Gewicht vorher&
+%103.7&95.2&87.6&97.7&76.8&110.9&85.1&95.3&101.3&99.8\\
+%Gewicht nachher&
+%99.8&92.3&88.2&96.5&74.0&106.4&83.4&95.0&100.0&95.3\\
+%\end{tabular}}\end{center}\vspace{2mm}
+%
+%Die Erfinderin der Diät behauptet, dass diese tatsächlich eine Gewichtsabnahme
+%bewirke.  Prüfen Sie diese Behauptung mit einem statistischen Test nach, 
+%\begin{outline}
+%\item mit dem Signifikanzniveau 0.05, 
+%\item mit dem Signifikanzniveau 0.0005. 
+%\end{outline}
+%
+%Geben Sie dabei die Null- und die Alternativhypothese explizit an.
+%\end{beamerboxesrounded}
+%\end{frame}
 
 \begin{frame}{Two Sample T-Test, Theorie}
 \begin{enumerate}
@@ -314,22 +346,59 @@ $$
 \end{frame}
 
 \begin{frame}{Two Sample T-Test, Beispiel}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 125, Serie 11}
-Zwei Gruppen von Ratten erhielten stark bzw. schwach proteinhaltiges Futter.
-Die Gewichtszunahmen in Gramm (vom 28. bis 84. Tag) waren bei der ersten Gruppe
+\begin{beamerboxesrounded}[shadow]{Aufgabe 65, Serie 11}
+Zwei Gruppen von weiblichen Ratten erhielten stark bzw. schwach proteinhaltiges Futter.
+Die Gewichtszunahmen in Gramm (im Laufe von 57 Tagen) waren bei der ersten Gruppe
 \begin{center}
-170, 112, 99, 120, 133, 152, 160, 146, 105,
+121, 132, 148, 105, 118, 121, 164, 108, 84, 111, 127, 96
 \end{center}
 und bei der zweiten Gruppe
 \begin{center}
-99, 102, 91, 125, 86, 137, 79.
+72, 115, 99, 87, 109, 127, 93, 113.
 \end{center}
 
-Prüfen Sie die Hypothese H0, dass die beiden Grundgesamtheiten gleiche
-Erwartungswerte haben, mit $\alpha = 0.05$.
+Prüfen Sie die Hypothese $\mathcal{H}_0$, dass die beiden Grundgesamtheiten gleiche
+Erwartungswerte haben, mit
+\begin{outline}
+\item $\alpha = 5\%$.
+\item $\alpha = 10\%$.
+\end{outline}
 \end{beamerboxesrounded}
 \end{frame}
 
+\section[Test bei E-W'keiten]{Tests bei Erfolgswahrscheinlichkeiten}
+\begin{frame}{Übersicht}
+\begin{itemize}
+\item Im Menü \keystroke{F6}
+\item \texttt{5:1-PropZTest\ldots} für den Einstichproben-Fall.
+\item \texttt{6:2-PropZTest\ldots} nicht benutzen!
+\item In der Regel \texttt{Data}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Test bei Erfolgswahrscheinlichkeiten, Theorie}
+Für eine Stichprobe:
+\begin{enumerate}
+\item Gegeben sind $k$, $n$ und $p_0$.
+\item Berechne: 
+$$
+z_\text{obs}=\left| \frac{\frac{k}{n}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\right|
+$$
+\item Inferenz mit Tabelle oder p-Wert ($t_\text{obs}\sim\mathcal{N}(0,1)$).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Test bei Erfolgswahrscheinlichkeiten, Beispiel}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 66(a), Serie 11}
+Bei einer Umfrage unter der weissen Bevölkerung der USA wurde ermittelt, ob
+die Leute mit der Amtsführung von George W. Bush zufrieden waren oder nicht.
+Es wurden 2000 Leute befragt. Davon gaben 890 Personen an, sie seien mit der
+Amtsführung von George W. Bush zufrieden. Die restlichen 1110 Personen gaben an,
+sie seien unzufrieden. Testen Sie mit einem Signifikanzniveau von 1\%, ob aufgrund
+dieser Umfrage die Meinung haltbar ist, dass die Hälfte der weissen Bevölkerung der
+USA mit der Amtsführung des Präsidenten zufrieden war. [\dots]
+\end{beamerboxesrounded}
+\end{frame}
 \section[KI]{Konfidenzintervalle}
 \begin{frame}{Übersicht}
 \begin{itemize}
@@ -341,27 +410,23 @@ Erwartungswerte haben, mit $\alpha = 0.05$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{KI mit \texttt{Stats}}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 110, Serie 10}
-Eine Stichprobe von 101 Geburten ergab ein mittleres Geburtsgewicht von 3.38 kg
-mit einer empirischen Standardabweichung von 0.45 kg. Geben Sie das
-Konfidenzintervall für das mittlere Geburtsgewicht an mit Q = 90\%.
-\end{beamerboxesrounded}
-\end{frame}
 
 \begin{frame}{KI mit \texttt{Data}}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 111, Serie 10}
-An einer Stichprobe von 12 Spatzen einer bestimmten Art wurden folgende
-Flügelspannweiten (in mm) gemessen (siehe Aufgabe 105):
+\begin{beamerboxesrounded}[shadow]{Aufgabe 57, Serie 10}
 
-\begin{center}
-245, 240, 236, 243, 247, 238, 239, 248, 238, 240, 244, 237
-\end{center}
+Der Geysir Old Faithful im Yellowstone-Nationalpark im Bundestaat Wyoming (USA)
+ist dafür bekannt, dass seine Eruptionen besonders häufig und regelmässig
+auftreten. Es wurden folgende Wartezeiten (in min) von einer Eruption zur
+nächsten gemessen:
 
-Bestimmen Sie das Konfidenzintervall für die mittlere Flügelspannweite
+$$
+79,\; 54,\; 74,\; 62,\; 85,\; 55,\; 88,\; 85,\; 51,\; 85
+$$
+
 \begin{outline}
-\item mit $Q = 90\%$
-\item mit $Q = 80\%$.
+\item \dots
+\item Bestimmen Sie ein 90\%-Konfidenzintervall für die durchschnittliche
+Wartezeit von einer Eruption zur nächsten.
 \end{outline}
 \end{beamerboxesrounded}
 \end{frame}
@@ -376,7 +441,7 @@ Bestimmen Sie das Konfidenzintervall für die mittlere Flügelspannweite
 \end{frame}
 
 \begin{frame}{Theorie}
-\begin{enumerate}
+\begin{outline}
 \item Gegeben sind $k$ Gruppen, in der $i$-ten Gruppe $n_i$, Beobachtungen
 $y_{i\,1}, y_{i\,2}, \ldots, y_{i\,ni}$.
 \item Berechne:
@@ -392,27 +457,26 @@ MS_E=\frac{1}{n-k}\underbrace{\sum_{i=1}^k\sum_{j=1}^{n_i}(Y_{ij}-\bar{Y}_{i.})^
 $$
 \item $V=\frac{MS_G}{MS_E}$
 \item Inferenz mit Tabelle oder p-Wert. ($V\sim F_{\underbrace{k-1}_{df_G},\underbrace{n-k}_{df_E}}$).
-\end{enumerate}
+\end{outline}
 \end{frame}
 
 
 \begin{frame}{Einfache Varianzanalyse}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 130, Serie 12}
-Wir messen das Gewicht von Moorfröschen (\textit{Rana arvalis}) an drei verschiedenen
-Weiern. Pro Weier vermessen wir vier Moorfrösche und notieren die erhaltenen
-Werte (in g) in die folgende Tabelle:
+\begin{beamerboxesrounded}[shadow]{Aufgabe 69, Serie 12}
+Frisch geschlüpfte Küken wurden in drei Gruppen eingeteilt. Jede Gruppe erhielt 6 
+Wochen lang einen andern Futtermittelzusatz. Danach wurden ihre Gewichte in g gemessen:
 
 \vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{ccc}\toprule
-Weier 1 & Weier 2 & Weier 3\\\midrule
-15.3& 17.2& 13.2\\
-16.1& 15.8& 15.1\\
-15.8& 16.4& 14.9\\
-16.3& 16.9& 16.2\\
+Leinsamen & Sonnenblumenkerne & Sojabohnen\\\midrule
+229 & 339 & 248\\
+141 & 226 & 327\\
+203 & 295 & 250\\
+169 & 334 & 271\\
 \bottomrule
 \end{tabular}}\end{center}\vspace{2mm}
 
-Unterscheiden sich die Moorfrösche hinsichlich ihres Gewichtes je nachdem an
-welchem Weier sie leben? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse
+Unterscheiden sich die Küken hinsichlich ihres Gewichtes je nachdem welchen Futtermittelzusatz
+sie bekommen haben? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse
 durch. Wählen Sie als Signifikanzniveau $\alpha = 5\%$.
 \end{beamerboxesrounded}
 \end{frame}
@@ -425,35 +489,37 @@ durch. Wählen Sie als Signifikanzniveau $\alpha = 5\%$.
 $$
 \hat{\sigma}^2 = \frac{1}{n-2}\sum_{i=1}^n (Y_i-\hat{Y}_i)^2
 $$
-\item Berechne für $\mathcal{H}_0: \beta=b$:
+\item Berechne für $\mathcal{H}_0: \beta_1=b$:
 $$
-t_\text{obs}=\frac{\hat\beta-b}{\sqrt{\hat\sigma^2/\sum_{i=1}^n(x_i-\bar{x})^2}}
+t_\text{obs}=\frac{\hat\beta_1-b}{\sqrt{\hat\sigma^2/\sum_{i=1}^n(x_i-\bar{x})^2}}
 $$
 \item Inferenz mit Tabelle oder p-Wert. ($t_\text{obs}\sim T_{n-2}$).
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Einfache Lineare Regression}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 134, Serie 12}
-Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus Aufgabe
-133:
+\begin{frame}{Einfache Lineare Regression, Inferenz}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 71, Serie 12}
+Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus der
+vorherigen Aufgabe:
 
-\vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
-Insel & Bartolomé & Darwin & Seymour & Tortuga & Wolf\\\midrule
+\begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
+Insel & Baltra & Eden & Isabela & Pinta & Santa Fé\\\midrule
 $x_i$&
-1.24&2.33&1.84&1.24&2.85\\
+ 346 & 71 & 1707 & 777 & 259\\
 $y_i$&
-31&10&44&16&21\\
+  58 & 8 & 347 & 104 & 62\\
 \bottomrule
-\end{tabular}}\end{center}\vspace{2mm}
+\end{tabular}}\end{center}
 
-\begin{itemize}
-\item[b)] Bestimmen Sie die Gleichung der Regressionsgeraden
-$y=\hat{\alpha}+\hat{\beta}x$ durch diese Punktpaare [\dots].
-\item[d)] Hat die Fläche Einfluss auf die Zielgrösse $Y$?
-\end{itemize}
-Testen Sie H0 : $\beta = 0$ gegen H1 : $\beta \ne 0$
+\begin{outline}
+\item \textcolor{black!20}{$[\dots]$ Bestimmen Sie die Gleichung der Regressionsgeraden
+$y=\hat{\beta_0}+\hat{\beta_1}x$ [\dots].}
+\item Hat die Höhe der höchsten Erhebung Einfluss auf die Anzahl der Pflanzenarten?
+Testen Sie $\mathcal{H}_0: \beta_1 = 0$ gegen $\mathcal{H}_1: \beta_1 \ne 0$
 zum Signifikanzniveau 5\%.
+\textcolor{black!20}{\item Berechnen Sie den Korrelationskoeffizienten zwischen den Daten
+$(x_i)_{i=1}^5$ und $(y_i)_{i=1}^5$.}
+\end{outline}
 \end{beamerboxesrounded}
 \end{frame}
 
@@ -526,14 +592,15 @@ zum Signifikanzniveau 5\%.
 \section*{MAT191}
 \begin{frame}{Inhaltsverzeichnis MAT191}
 \begin{enumerate}
-\item Die einfache Varianzanalyse (ANOVA);
-\item Die einfache lineare Regression, mehrfache Regression, polynomiale Regression;
-\item Die zweifache ANOVA (additiv und mit einer Wechselwirkung);
-\item Die hierarchische ANOVA (feste und zufällige Effekte);
-\item Die Covarianzanalyse mittels einer multiplen Regression;
-\item Die nichtparametrischen Verfahren;
-\item Relative Häufigkeiten als Daten;
-\item Einführung in Maximum Likelihood.
+\item Repetition Testtheorie
+\item Die einfache Varianzanalyse (ANOVA)
+\item Die einfache lineare Regression, mehrfache Regression, polynomiale Regression
+\item Die zweifache ANOVA (additiv und mit einer Wechselwirkung)
+\item Die hierarchische ANOVA (feste und zufällige Effekte)
+\item Die Covarianzanalyse mittels einer multiplen Regression
+\item Die nichtparametrischen Verfahren
+\item Relative Häufigkeiten als Daten
+\item Einführung in Maximum Likelihood
 \end{enumerate}
 Ausserdem wird eine Einführung in R gegeben.
 \end{frame}
