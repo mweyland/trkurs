@@ -1,0 +1,181 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+%\usepackage{pnup}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=3mm]
+\mode<presentation>
+{
+    %\usetheme{Darmstadt}
+    \usetheme{Frankfurt}
+    %\usetheme{Singapore}
+    \usecolortheme{crane}
+    \definecolor{craneblue}{RGB}{60,0,0}
+%    \usecolortheme{seahorse}
+    \setbeamercovered{transparent}
+    \setbeamertemplate{items}[triangle]
+    \setbeamertemplate{enumerate items}[default]
+
+}
+
+
+\usepackage[german]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{booktabs}
+\setcounter{tocdepth}{2}
+\newlength{\tikey}
+\newcommand{\keystroke}[1]{\settowidth{\tikey}{\scriptsize #1}\psframebox[framearc=0.2]{\parbox{\tikey}{\scriptsize #1}}}
+
+\usepackage{outline}%
+\def\labeloutlni{\theoutlni}%
+\def\theoutlni{\protect{(\alph{outlni})}}%
+%
+%\usepackage{tikz}
+%\usebackgroundtemplate{%
+%\begin{tikzpicture}
+%  \node [rotate=30,scale=8.25,color=gray!20] at (current page.center) {DRAFT};
+%\end{tikzpicture}}
+\title{Taschenrechnerkurs für MAT183, Teil 1}
+
+\author{Mathias Weyland}
+
+\date{7. Juni -- 13. Juni 2012}
+
+\AtBeginSection[]
+{
+\subsection{}
+  \begin{frame}<beamer>
+    \begin{beamerboxesrounded}[shadow]{\inserttitle}
+      \insertsection
+    \end{beamerboxesrounded}
+  \end{frame}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\begin{document}
+
+\frame{\maketitle}
+
+%\begin{frame}{Punkteverteilung}
+%\fig{noten3.eps}
+%\end{frame}
+
+\section{Fakultät/Binomialkoeffizient}
+
+\begin{frame}{Aufgabe 3, Serie 1}
+An einem Treffen an der Universität Zürich nehmen 18 Professoren der Biologie teil, 5 von
+ihnen sind Deutsche, 6 sind Schweizer und 7 sind Amerikaner. Sie möchten 3 Personen
+für ein Komitee auswählen.
+
+\begin{outline}
+\item Nehmen Sie an, dass es keine Hierarchie innerhalb des Komitees gibt, d.h., dass die
+drei Posten nicht voneinander unterscheidbar sind. Wieviele solcher Komitees kann
+man wählen? [\ldots]\pause
+\item Nehmen Sie nun an, dass es eine Hierarchie innerhalb des Komitees gibt, d.h., dass es
+einen Präsidenten, einen Vizepräsidenten und einen Sekretären gibt. Wieviele solcher
+Komitees kann man wählen? [\ldots]
+\end{outline}
+\end{frame}
+
+\section{Summen}
+\begin{frame}{Aufgabe 29, Serie 5}
+Die Wahrscheinlichkeit dafür, dass ein Schweizer die Blutgruppe B hat, beträgt 7\%. Mit
+welcher Wahrscheinlichkeit haben von 20 zufällig ausgewählten Schweizern strikt weniger
+als ein Achtel die Blutgruppe B?
+\end{frame}
+
+\section{Gleichungen}
+\begin{frame}{Aufgabe 15, Serie 3}
+Ein Würfel ist verfälscht. Die Zwei ist viermal so wahrscheinlich wie die Sechs, die Eins
+und die Drei sind beide doppelt so wahrscheinlich wie die Sechs, und die restlichen beiden
+Augenzahlen sind halb so wahrscheinlich wie die Sechs.
+\begin{outline}
+\item Bestimmen Sie die einzelnen Wahrscheinlichkeiten.
+\item $[\dots]$.
+\end{outline}
+\end{frame}
+
+\section{GLS/Wobei-Operator}
+\begin{frame}{Aufgabe 66, Serie 11}
+\begin{outline}
+\item Bei einer Umfrage unter der weissen Bevölkerung der USA wurde ermittelt, ob
+die Leute mit der Amtsführung von George W. Bush zufrieden waren oder nicht.
+Es wurden 2000 Leute befragt. Davon gaben 890 Personen an, sie seien mit der
+Amtsführung von George W. Bush zufrieden. Die restlichen 1110 Personen gaben an,
+sie seien unzufrieden. [\dots]
+
+\item In einer weiteren Umfrage sollte ermittelt werden welcher Anteil der nicht-weissen
+US-Bevölkerung mit der Amtsführung von George W. Bush zufrieden war. Diesmal
+wurden 3800 Personen befragt. Davon gaben 1492 an, sie seien zufrieden, und die
+restlichen gaben an, sie seien dies nicht. Gibt es einen signifikanten Unterschied zwischen der nicht-weissen und weissen US-Bevölkerung, was die Zufriedenheit mit der
+Amtsführung von Präsident Bush betrifft ($\alpha = 5\%$).
+\end{outline}
+\end{frame}
+
+\section{Statistische Masse}
+\begin{frame}{Aufgabe 8, Serie 2}
+Die Messung der Körperlänge (auf 0.5cm genau) von 16 zehnjährigen Mädchen ergab
+folgende Werte (in cm):
+
+\begin{center}
+141.5, 143, 140.5, 145.5, 142.5, 143, 151, 146.5, 142, 147.5, 143.5, 144, 142, 145, 146, 144.5
+\end{center}
+\begin{outline}
+\item $[\dots]$
+\item $[\dots]$
+\item Lagemasse: Bestimmen Sie das arithmetische Mittel, den Median, sowie das 25\%-
+und das 75\%-Quartil.
+\item Streuungmasse: Bestimmen Sie die Variationsbreite und den Interdezilbereich. [\dots]
+\end{outline}
+\end{frame}
+
+\section{Integrale}
+\begin{frame}{Aufgabe 31, Serie 6}
+Die Exponentialverteilung mit Rate $\lambda > 0$ ist durch die Dichtefunktion $f : \mathbb{R} \rightarrow \mathbb{R}$
+$$
+f(x)=\begin{cases} 0 & \text{für } x < 0\\
+     \lambda e^{-\lambda x} & \text{sonst}\\
+     \end{cases}
+$$
+gegeben. 
+\begin{outline}
+\item $[\dots]$
+\item Sei $X$ eine Zufallsgrösse mit Dichtefunktion $f$ . Zeigen Sie, dass die Verteilungsfunktion von $X$ durch
+$$
+F(x)=\begin{cases} 0 & \text{für } x < 0\\
+     1-e^{-\lambda x} & \text{sonst}\\
+     \end{cases}
+$$
+gegeben ist. [\dots]\pause
+\item Was ist der Median von X?\pause
+\item Bestimmen Sie, für $\lambda = 0.5$, die folgenden Wahrscheinlichkeiten: $ [X\le 2]$, $P[X >
+2]$, $P[X\ge 2]$.
+\end{outline}
+\end{frame}
+
+\begin{frame}{Aufgabe 33, Serie 6}
+Die Exponentialverteilung wird oft verwendet, wenn die Zufallsvariable eine “Wartezeit”
+misst, also die Zeit $t$ bis zum Eintreffen eines bestimmten Ereignisses. Das klassische
+Beispiel dafür ist der Atomzerfall, wo die Dauer bis ein bestimmtes radioaktives Isotop
+zerfällt gemessen wird. In einem radioaktiven Gegenstand gibt es viele aktive Isotope.
+\vfill
+Der Median den wir in Aufgabe 31(c) berechnen, entspricht dem Zeitpunkt $\tilde{t}$, wo ein
+einzelnes dieser Isotope mit Wahrscheinlichkeit 50\% zerfallen ist. Im Durchnitt wird also
+zu diesem Zeitpunkt $\tilde{t}$ etwa die Hälfte aller Isoptope im radioaktiven Gegenstand zerfallen
+und somit die Strahlung auf die Hälfte abgesunken sein. In diesem Zusammenhang ist
+der Median einer exponentialverteilten Zufallsgrösse besser bekannt unter dem Begriff
+“Halbwertszeit”.
+\end{frame}
+
+\begin{frame}{Aufgabe 33, Serie 6 (Fortzsetzung)}
+\begin{outline}
+\item Radium Ra-226 hat eine Halbwertszeit von 1602 Jahren. Wir stellen die Wartezeit
+eines einzelnen Radium-Atoms bis zu seinem Zerfall mit einer exponentialverteilten
+Zufallsgrösse $W$ dar. Bestimmen Sie die Rate dieser Verteilung und geben Sie die
+Verteilungsfunktion an.
+\item[(b)] Mit welcher Wahrscheinlichkeit braucht ein Ra-226 Atom mehr als 4000 Jahre, bis
+es zerfallen ist?
+\item[(c)] Wir betrachten nun zehn Ra-226 Atome deren Zerfallszeiten $W_1, \dots, W_{10}$ alle voneinander 
+unabhängig sind. Mit welcher Wahrscheinlichkeit dauert es weniger als
+6000 Jahre, bis alle Atome zerfallen sind?
+\end{outline}
+\end{frame}
+\end{document}
