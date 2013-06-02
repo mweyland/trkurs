@@ -22,18 +22,17 @@
 \usepackage{booktabs}
 \setcounter{tocdepth}{2}
 \newlength{\tikey}
-\newcommand{\keystroke}[1]{\settowidth{\tikey}{\scriptsize #1}\psframebox[framearc=0.2]{\parbox{\tikey}{\scriptsize #1}}}
+\newcommand\keystroke[1]{~\tikz[overlay]\node[inner sep=2pt, outer sep=2pt,anchor=text, rectangle, rounded corners=1mm,fill=black!20,draw] {#1};\phantom{#1}~}
 \usepackage{outline}%
 \def\labeloutlni{\theoutlni}%
 \def\theoutlni{\protect{(\alph{outlni})}}%
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumerate}
-\usepackage{pstricks}
-\usepackage{txfonts}
 \usepackage{wasysym}
+\usepackage{txfonts}
 
-%\usepackage{tikz}
+\usepackage{tikz}
 %\usebackgroundtemplate{%
 %\begin{tikzpicture}
 %  \node [rotate=30,scale=8.25,color=gray!20] at (current page.center) {DRAFT};
@@ -42,7 +41,7 @@
 
 \author{Ueli Hartmann\\Mathias Weyland}
 
-\date{6. -- 13. Juni 2012}
+\date{Juni 2013}
 
 \AtBeginSection[]
 {
@@ -83,37 +82,22 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Statistische Messgrössen}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 57, Serie 10}
+\begin{frame}{Aufgabe 3, Serie 2}
+Die Messung der Körperlänge (auf 0.5cm genau) von 16 zehnjährigen Mädchen ergab
+folgende Werte (in cm):
 
-Der Geysir Old Faithful im Yellowstone-Nationalpark im Bundestaat Wyoming (USA)
-ist dafür bekannt, dass seine Eruptionen besonders häufig und regelmässig
-auftreten. Es wurden folgende Wartezeiten (in min) von einer Eruption zur
-nächsten gemessen:
-
-$$
-79,\; 54,\; 74,\; 62,\; 85,\; 55,\; 88,\; 85,\; 51,\; 85
-$$
-
+\begin{center}
+131.5, 130, 137.5, 140.5, 132.5, 151, 138, 136, 133, 138, 134.5, 140, 132, 139, 133.5, 131
+\end{center}
 \begin{outline}
-\item Schätzen Sie Erwartungswert, Varianz und Standardfehler für die Grundgesamtheit.
-\item \dots
+\item $[\dots]$
+\item $[\dots]$
+\item Lagemasse: Bestimmen Sie das arithmetische Mittel, den Median, sowie das 25\%-
+und das 75\%-Quartil.
+\item Streuungmasse: Bestimmen Sie die Variationsbreite und den Interdezilbereich. [\dots]
+\item Streuungmasse: Bestimmen Sie die empirische Varianz und die Standardabweichung [\dots].
 \end{outline}
-\end{beamerboxesrounded}
 \end{frame}
-
-%\begin{frame}[fragile]{Messgrössen mit Häufigkeiten}
-%\begin{beamerboxesrounded}[shadow]{Aufgabe 104, Serie 10}
-%Eine Untersuchung ergab folgende Daten:
-%\begin{center}\begin{tabular}{l|rrrrrrrr}\toprule
-%Messwert:          &15& 17& 19& 25& 30& 14& 29& 38\\
-%Absolute Häufigkeit& 2&  6&  4& 10&  7&  2&  1&  3\\\bottomrule
-%\end{tabular}\end{center}
-%
-%Schätzen Sie Erwartungswert, Varianz und Standardabweichung der zugehörigen
-%Grundgesamtheit.
-%\end{beamerboxesrounded}
-%\end{frame}
 
 \section{Listen}
 \begin{frame}{Übersicht}
@@ -122,19 +106,6 @@ $$
 \item Falls Bruch angegeben wird: \keystroke{$\Diamondblack$}~\keystroke{ENTER}
 \item Gänsefüsschen (\texttt{"}) für automatische Korrektur
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Arbeiten mit Listen}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 38, Serie 7}
-Die Verteilung einer diskreten Zufallsgrösse $X$ ist durch die folgende Tabelle gegeben:
-
-\begin{center}\begin{tabular}{c|ccccc}\toprule
-$x_i$ & -3 & -2 &  0 & 1 & 4\\\midrule
-$P[X = x_i ]$ &  0.1 & 0.3 & 0.3 & 0.2 & 0.1\\\bottomrule
-\end{tabular}\end{center}
-
-[\dots]
-\end{beamerboxesrounded}
 \end{frame}
 
 %\section{Verteilungen}
@@ -203,23 +174,23 @@ $$
 \end{frame}
 
 \begin{frame}{Einfache Lineare Regression, Parameterschätzung}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 71, Serie 12}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 5, Serie 12}
 Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus der
 vorherigen Aufgabe:
 
 \begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
 Insel & Baltra & Eden & Isabela & Pinta & Santa Fé\\\midrule
 $x_i$&
- 346 & 71 & 1707 & 777 & 259\\
+ 1.12 & 0.77 & 0.82 & 1.56 & 1.22\\
 $y_i$&
-  58 & 8 & 347 & 104 & 62\\
+  58 & 44 & 56 & 45 & 62\\
 \bottomrule
 \end{tabular}}\end{center}
 
 \begin{outline}
 \item $[\dots]$ Bestimmen Sie die Gleichung der Regressionsgeraden
 $y=\hat{\beta_0}+\hat{\beta_1}x$ [\dots].
-\textcolor{black!20}{\item Hat die Höhe der höchsten Erhebung Einfluss auf die Anzahl der Pflanzenarten?
+\textcolor{black!20}{\item Hat die Fläche einen Einfluss auf die Anzahl der Pflanzenarten?
 Testen Sie $\mathcal{H}_0: \beta_1 = 0$ gegen $\mathcal{H}_1: \beta_1 \ne 0$
 zum Signifikanzniveau 5\%.}
 
@@ -233,7 +204,7 @@ $(x_i)_{i=1}^5$ und $(y_i)_{i=1}^5$.
 \begin{frame}{Übersicht}
 \begin{itemize}
 \item Im Menü \keystroke{F6}
-\item One Sample-, Two Sample und Paired T-Test
+\item One Sample- und Two Sample T-Test.
 \item Mit Schätzern (\texttt{Stats}) oder Daten (\texttt{Data})
 \item Eingabe der Prüfgrösse $\mu_0$ und der \textbf{Alternativ}-Hypothese
 \item Ausgabe von t- und p-Wert sowie $\bar{x}$, $n$ und empirische Standardabweichung
@@ -259,37 +230,25 @@ $$
 \end{frame}
 
 \begin{frame}{One Sample T-Test mit \texttt{Data}}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 64, Serie 11}
-Zehn Tabletten wurden gewogen. Man erhielt folgende Gewichte in Gramm
+\begin{beamerboxesrounded}[shadow]{Aufgabe 2, Serie 11}
+Eine Abfüllmaschine für Puderzucker war so eingestellt, dass das mittlere Abfüllgewicht
+pro Packung 150 g betrug. Eine Stichprobe von 8 Packungen lieferte folgende Werte (in
+g)
 
 \begin{center}
-1.50, 1.48, 1.49, 1.53, 1.48, 1.51, 1.57, 1.47, 1.45, 1.44 .
+130, 110, 100, 150, 160, 130, 110, 150
 \end{center}
 
 \begin{outline}
 \item Testen Sie mit einem zweiseitigen Test die Hypothese, dass das
-Durchschnittsgewicht der Tabletten 1.5 g beträgt.
-\item Es  wird vermutet, die Tabletten wögen im Mittel weniger als 1.5 g. Testen Sie
+Durchschnittsgewicht Pro Packung 150 g beträgt.
+\item Es  wird vermutet, die Packungen wögen im Mittel weniger als 150 g. Testen Sie
 mit einem einseitigen Test auch diese Hypothese. Wie sind $\mathcal{H}_0$ und 
 $\mathcal{H}_1$ zu wählen?
 \end{outline}
 Arbeiten Sie sowohl bei (a) als auch bei (b) mit $\alpha = 5\%$.
 \end{beamerboxesrounded}
 \end{frame}
-
-\begin{frame}{One Sample T-Test mit \texttt{Stats}}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 61, Serie 11}
-Ein Werkstück sollte eine Länge von 200 mm haben. Eine Überprüfung einer
-Stichprobe von 25 Stück ergab eine durchschnittliche Länge von 198 mm mit einer
-empirischen Standardabweichung von 10 mm.
-
-\begin{outline}
-\item Testen Sie die Hypothese, dass die mittlere Länge aller produzierten Werkstücke 200 mm beträgt.
-\item Testen Sie die Frage, ob die Stücke im Mittel allenfalls zu kurz seien.
-\end{outline}
-\end{beamerboxesrounded}
-\end{frame}
-
 
 %\begin{frame}{Paired T-Test, Theorie}
 %\begin{enumerate}
@@ -346,59 +305,61 @@ $$
 \end{frame}
 
 \begin{frame}{Two Sample T-Test, Beispiel}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 65, Serie 11}
-Zwei Gruppen von weiblichen Ratten erhielten stark bzw. schwach proteinhaltiges Futter.
-Die Gewichtszunahmen in Gramm (im Laufe von 57 Tagen) waren bei der ersten Gruppe
+\begin{beamerboxesrounded}[shadow]{Aufgabe 4, Serie 11}
+In einer Studie wird der Einfluss eines Düngemittels auf eine bestimmte Pflanzenart 
+untersucht. Dazu wurde die erste Gruppe mit 12 Töpfen mit je einem Keimling dieser 
+Pflanzenart regelmässig mit dem Düngemittel versorgt, und 8 Töpfe mit je einem Keimling
+ohne Dünger gegossen. Die Länge in mm nach einem Monat waren bei der ersten Gruppe
 \begin{center}
-121, 132, 148, 105, 118, 121, 164, 108, 84, 111, 127, 96
+245, 240, 236, 243, 247, 238, 239, 248, 238, 240, 244, 237
 \end{center}
 und bei der zweiten Gruppe
 \begin{center}
-72, 115, 99, 87, 109, 127, 93, 113.
+235, 233, 236, 234, 231, 242, 237, 230 .
 \end{center}
 
-Prüfen Sie die Hypothese $\mathcal{H}_0$, dass die beiden Grundgesamtheiten gleiche
-Erwartungswerte haben, mit
 \begin{outline}
-\item $\alpha = 5\%$.
-\item $\alpha = 10\%$.
+\item Prüfen Sie die Hypothese $\mathcal{H}_0$, dass die beiden Grundgesamtheiten gleiche
+Erwartungswerte haben, mit $\alpha = 5\%$.
+\item [\dots]
 \end{outline}
 \end{beamerboxesrounded}
 \end{frame}
 
-\section[Test bei E-W'keiten]{Tests bei Erfolgswahrscheinlichkeiten}
-\begin{frame}{Übersicht}
-\begin{itemize}
-\item Im Menü \keystroke{F6}
-\item \texttt{5:1-PropZTest\ldots} für den Einstichproben-Fall.
-\item \texttt{6:2-PropZTest\ldots} nicht benutzen!
-\item In der Regel \texttt{Data}.
-\end{itemize}
-\end{frame}
+%\section[Test bei E-W'keiten]{Tests bei Erfolgswahrscheinlichkeiten}
+%\begin{frame}{Übersicht}
+%\begin{itemize}
+%\item Im Menü \keystroke{F6}
+%\item \texttt{5:1-PropZTest\ldots} für den Einstichproben-Fall.
+%\item \texttt{6:2-PropZTest\ldots} nicht benutzen!
+%\item In der Regel \texttt{Data}.
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Test bei Erfolgswahrscheinlichkeiten, Theorie}
+%Für eine Stichprobe:
+%\begin{enumerate}
+%\item Gegeben sind $k$, $n$ und $p_0$.
+%\item Berechne: 
+%$$
+%z_\text{obs}=\left| \frac{\frac{k}{n}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\right|
+%$$
+%\item Inferenz mit Tabelle oder p-Wert ($t_\text{obs}\sim\mathcal{N}(0,1)$).
+%\end{enumerate}
+%\end{frame}
+%
+%\begin{frame}{Test bei Erfolgswahrscheinlichkeiten, Beispiel}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 66(a), Serie 11}
+%Bei einer Umfrage unter der weissen Bevölkerung der USA wurde ermittelt, ob
+%die Leute mit der Amtsführung von George W. Bush zufrieden waren oder nicht.
+%Es wurden 2000 Leute befragt. Davon gaben 890 Personen an, sie seien mit der
+%Amtsführung von George W. Bush zufrieden. Die restlichen 1110 Personen gaben an,
+%sie seien unzufrieden. Testen Sie mit einem Signifikanzniveau von 1\%, ob aufgrund
+%dieser Umfrage die Meinung haltbar ist, dass die Hälfte der weissen Bevölkerung der
+%USA mit der Amtsführung des Präsidenten zufrieden war. [\dots]
+%\end{beamerboxesrounded}
+%\end{frame}
 
-\begin{frame}{Test bei Erfolgswahrscheinlichkeiten, Theorie}
-Für eine Stichprobe:
-\begin{enumerate}
-\item Gegeben sind $k$, $n$ und $p_0$.
-\item Berechne: 
-$$
-z_\text{obs}=\left| \frac{\frac{k}{n}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\right|
-$$
-\item Inferenz mit Tabelle oder p-Wert ($t_\text{obs}\sim\mathcal{N}(0,1)$).
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Test bei Erfolgswahrscheinlichkeiten, Beispiel}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 66(a), Serie 11}
-Bei einer Umfrage unter der weissen Bevölkerung der USA wurde ermittelt, ob
-die Leute mit der Amtsführung von George W. Bush zufrieden waren oder nicht.
-Es wurden 2000 Leute befragt. Davon gaben 890 Personen an, sie seien mit der
-Amtsführung von George W. Bush zufrieden. Die restlichen 1110 Personen gaben an,
-sie seien unzufrieden. Testen Sie mit einem Signifikanzniveau von 1\%, ob aufgrund
-dieser Umfrage die Meinung haltbar ist, dass die Hälfte der weissen Bevölkerung der
-USA mit der Amtsführung des Präsidenten zufrieden war. [\dots]
-\end{beamerboxesrounded}
-\end{frame}
 \section[KI]{Konfidenzintervalle}
 \begin{frame}{Übersicht}
 \begin{itemize}
@@ -411,26 +372,73 @@ USA mit der Amtsführung des Präsidenten zufrieden war. [\dots]
 \end{frame}
 
 
-\begin{frame}{KI mit \texttt{Data}}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 57, Serie 10}
-
-Der Geysir Old Faithful im Yellowstone-Nationalpark im Bundestaat Wyoming (USA)
-ist dafür bekannt, dass seine Eruptionen besonders häufig und regelmässig
-auftreten. Es wurden folgende Wartezeiten (in min) von einer Eruption zur
-nächsten gemessen:
-
-$$
-79,\; 54,\; 74,\; 62,\; 85,\; 55,\; 88,\; 85,\; 51,\; 85
-$$
-
+\begin{frame}{KI für einen Erwartungswert mit \texttt{Stats}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 6, Serie 10}
+Die Bestimmung des Durchmessers der Blüten von Heckenrosen 
+(\textit{Rosa canina}) ergab einen Mittelwert von 37.5 mm mit 
+einer empirischen Varianz von 156.25 mm$^2$. Geben Sie
+das 95\%-Konfidenzintervall für den mittleren Blütendurchmesser an 
+für den Fall, wo die Messungen an 
 \begin{outline}
-\item \dots
-\item Bestimmen Sie ein 90\%-Konfidenzintervall für die durchschnittliche
-Wartezeit von einer Eruption zur nächsten.
+\item 20 
+\item 2000 Blüten durchgeführt wurden.
 \end{outline}
 \end{beamerboxesrounded}
 \end{frame}
 
+\begin{frame}{KI für einen Erwartungswert mit \texttt{Data}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 2, Serie 10}
+
+An einer Stichprobe von 7 Schmetterlingen einer bestimmten Art wurden folgende 
+Flügelspannweiten (in mm) gemessen:
+
+\begin{center}
+34, 28, 36, 24, 32, 32, 38
+\end{center}
+
+Nehmen Sie Normalverteilung an.
+
+\begin{outline}
+\item Schätzen Sie Erwartungswert, Varianz, Standardabweichung und Standardfehler der Grundgesamtheit.
+\item Bestimmen Sie ein 95\%-Konfidenzintervall für die mittlere Flügelspannweite.
+\end{outline}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{KI für Differenz zweier Erwartungswerte mit \texttt{Stats}}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 5, Serie 10}
+In einer Studie wird der Einfluss der UV-Strahlung auf eine bestimmte Pflanzenart 
+untersucht. Dazu werden 31 Töpfe mit je einem Keimling dieser Pflanzenart regelmässig
+mit UV-Lampen bestrahlt, und 31 Töpfe mit je einem Keimling wachsen unter normalen
+Bedingungen.
+
+Nach einem Monat wird die Länge jeder Pflanze gemessen. Wir stellen fest, dass die unbestrahlten 
+Pflanzen im Durchschnitt 30 cm gross sind, mit einer empirischen Standardabweichung von 4 cm, 
+und dass die bestrahlten Pflanzen eine durchschnittliche Grösse von 24 cm erreicht haben, mit 
+einer Standardabweichung von 3 cm.
+
+Wie gross ist das 95\%-Konfidenzintervall für die Differenz der Mittelwerte?
+\end{beamerboxesrounded}
+\end{frame}
+
+%\begin{frame}{KI für Differenz zweier Wahrscheinlichkeiten mit \texttt{Stats}}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 4, Serie 10}
+%\small{In einer Studie wird ein neues alternatives Medikament gegen eine bestimmte Krankheit
+%untersucht. Es nehmen 500 Personen, die an einer Krankheit leiden, an der Studie teil.
+%Von diesen Personen werden 300 zufällig ausgewählt. Sie bekommen das neue Medikament
+%verabreicht. Die verbleibenden 200 Personen bilden die Kontrollgruppe, d.h. sie nehmen
+%weiterhin ein herkömmliches Medikament ein. Nach einem Jahr wird kontrolliert, wie sich
+%der Gesundheitszustand der Teilnehmer verändert hat. In der ersten Gruppe stellen wir
+%fest, dass sich der Gesundheitszustand bei 201 Personen verbessert hat und bei den 
+%verbleibenden 99 gleich geblieben ist oder sich gar verschlechtert hat. Bei der Kontrollgruppe
+%hat sich der Gesundheitszustand bei 121 Personen verbessert, und bei den restlichen 79
+%Leuten ist er gleich geblieben oder hat sich verschlechtert. Mit $p_1$ bezeichnen wir die
+%Wahrscheinlichkeit der Verbesserung des Gesundheitszustandes (innerhalb eines Jahres)
+%einer Person der ersten Gruppe und mit $p_2$ die entsprechende Wahrscheinlichkeit für
+%eine Person in der zweiten Gruppe. Bestimmen Sie das 95\%-Konfidenzintervall der Differenz.}
+%\end{beamerboxesrounded}
+%\end{frame}
+%
 \section{ANOVA}
 \begin{frame}{Übersicht}
 \begin{itemize}
@@ -462,22 +470,22 @@ $$
 
 
 \begin{frame}{Einfache Varianzanalyse}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 69, Serie 12}
-Frisch geschlüpfte Küken wurden in drei Gruppen eingeteilt. Jede Gruppe erhielt 6 
-Wochen lang einen andern Futtermittelzusatz. Danach wurden ihre Gewichte in g gemessen:
+\begin{beamerboxesrounded}[shadow]{Aufgabe 2, Serie 12}
+Wir messen das Gewicht von Regenbogenforellen von drei verschiedenen Seen. Pro See
+vermessen wir vier Fische und notieren die erhaltenen Werte (in g)
 
 \vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{ccc}\toprule
-Leinsamen & Sonnenblumenkerne & Sojabohnen\\\midrule
-229 & 339 & 248\\
-141 & 226 & 327\\
-203 & 295 & 250\\
-169 & 334 & 271\\
+See 1 & See 2 & See 3\\\midrule
+132 & 172 & 153\\
+169 & 163 & 162\\
+158 & 161 & 151\\
+164 & 149 & 158\\
 \bottomrule
 \end{tabular}}\end{center}\vspace{2mm}
 
-Unterscheiden sich die Küken hinsichlich ihres Gewichtes je nachdem welchen Futtermittelzusatz
-sie bekommen haben? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse
-durch. Wählen Sie als Signifikanzniveau $\alpha = 5\%$.
+Unterscheiden sich die Fische hinsichtlich ihres Gewichtes je nachdem in welchem
+See sie leben? Führen Sie zur Beantwortung dieser Frage eine Varianzanalyse durch.
+Wählen Sie als Signifikanzniveau 5\%.
 \end{beamerboxesrounded}
 \end{frame}
 
@@ -498,27 +506,27 @@ $$
 \end{frame}
 
 \begin{frame}{Einfache Lineare Regression, Inferenz}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 71, Serie 12}
+\begin{beamerboxesrounded}[shadow]{Aufgabe 5, Serie 12}
 Wir betrachten die folgenden Messwerte zu fünf der Galápagos-Inseln aus der
 vorherigen Aufgabe:
 
 \begin{center}{\scriptsize\begin{tabular}{l|ccccc}\toprule
 Insel & Baltra & Eden & Isabela & Pinta & Santa Fé\\\midrule
 $x_i$&
- 346 & 71 & 1707 & 777 & 259\\
+ 1.12 & 0.77 & 0.82 & 1.56 & 1.22\\
 $y_i$&
-  58 & 8 & 347 & 104 & 62\\
+  58 & 44 & 56 & 45 & 62\\
 \bottomrule
 \end{tabular}}\end{center}
 
 \begin{outline}
-\item \textcolor{black!20}{$[\dots]$ Bestimmen Sie die Gleichung der Regressionsgeraden
-$y=\hat{\beta_0}+\hat{\beta_1}x$ [\dots].}
-\item Hat die Höhe der höchsten Erhebung Einfluss auf die Anzahl der Pflanzenarten?
+\item $[\dots]$ Bestimmen Sie die Gleichung der Regressionsgeraden
+$y=\hat{\beta_0}+\hat{\beta_1}x$ [\dots].
+\item \textbf{Hat die Fläche einen Einfluss auf die Anzahl der Pflanzenarten?
 Testen Sie $\mathcal{H}_0: \beta_1 = 0$ gegen $\mathcal{H}_1: \beta_1 \ne 0$
-zum Signifikanzniveau 5\%.
-\textcolor{black!20}{\item Berechnen Sie den Korrelationskoeffizienten zwischen den Daten
-$(x_i)_{i=1}^5$ und $(y_i)_{i=1}^5$.}
+zum Signifikanzniveau 5\%.}
+\item Berechnen Sie den Korrelationskoeffizienten zwischen den Daten
+$(x_i)_{i=1}^5$ und $(y_i)_{i=1}^5$.
 \end{outline}
 \end{beamerboxesrounded}
 \end{frame}
@@ -587,21 +595,4 @@ $(x_i)_{i=1}^5$ und $(y_i)_{i=1}^5$.}
 %einen Herzinfarkt. Besteht ein signifikanter Unterschied ($\alpha = 0.001$)?
 %\end{beamerboxesrounded}
 %\end{frame}
-
-\appendix
-\section*{MAT191}
-\begin{frame}{Inhaltsverzeichnis MAT191}
-\begin{enumerate}
-\item Repetition Testtheorie
-\item Die einfache Varianzanalyse (ANOVA)
-\item Die einfache lineare Regression, mehrfache Regression, polynomiale Regression
-\item Die zweifache ANOVA (additiv und mit einer Wechselwirkung)
-\item Die hierarchische ANOVA (feste und zufällige Effekte)
-\item Die Covarianzanalyse mittels einer multiplen Regression
-\item Die nichtparametrischen Verfahren
-\item Relative Häufigkeiten als Daten
-\item Einführung in Maximum Likelihood
-\end{enumerate}
-Ausserdem wird eine Einführung in R gegeben.
-\end{frame}
 \end{document}
