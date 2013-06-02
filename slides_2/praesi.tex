@@ -1,7 +1,7 @@
-\documentclass{beamer}
-%\documentclass[handout]{beamer}
-%\usepackage{pnup}
-%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=3mm]
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+\usepackage{pnup}
+\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=3mm]
 \mode<presentation>
 {
     %\usetheme{Darmstadt}
@@ -22,22 +22,21 @@
 \usepackage{booktabs}
 \setcounter{tocdepth}{2}
 \newlength{\tikey}
-\newcommand{\keystroke}[1]{\settowidth{\tikey}{\scriptsize #1}\psframebox[framearc=0.2]{\parbox{\tikey}{\scriptsize #1}}}
+\newcommand\keystroke[1]{~\tikz[overlay]\node[inner sep=2pt, outer sep=2pt,anchor=text, rectangle, rounded corners=1mm,fill=black!20,draw] {#1};\phantom{#1}~}
 \usepackage{outline}%
 \def\labeloutlni{\theoutlni}%
 \def\theoutlni{\protect{(\alph{outlni})}}%
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumerate}
-\usepackage{pstricks}
-\usepackage{txfonts}
 \usepackage{wasysym}
+\usepackage{txfonts}
 
 \usepackage{tikz}
-\usebackgroundtemplate{%
-\begin{tikzpicture}
-  \node [rotate=30,scale=8.25,color=gray!20] at (current page.center) {DRAFT};
-\end{tikzpicture}}
+%\usebackgroundtemplate{%
+%\begin{tikzpicture}
+%  \node [rotate=30,scale=8.25,color=gray!20] at (current page.center) {DRAFT};
+%\end{tikzpicture}}
 \title{Taschenrechnerkurs für MAT183, Teil 2}
 
 \author{Ueli Hartmann\\Mathias Weyland}
@@ -107,19 +106,6 @@ und das 75\%-Quartil.
 \item Falls Bruch angegeben wird: \keystroke{$\Diamondblack$}~\keystroke{ENTER}
 \item Gänsefüsschen (\texttt{"}) für automatische Korrektur
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Arbeiten mit Listen}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 1, Serie 7}
-Die Verteilung einer diskreten Zufallsgrösse $X$ ist durch die folgende Tabelle gegeben:
-
-\begin{center}\begin{tabular}{c|ccccc}\toprule
-$x_i$ & -10 & -8 &  0 & 7 & 9\\\midrule
-$P[X = x_i ]$ &  0.1 & 0.3 & 0.4 & 0.1 & 0.1\\\bottomrule
-\end{tabular}\end{center}
-
-[\dots]
-\end{beamerboxesrounded}
 \end{frame}
 
 %\section{Verteilungen}
@@ -435,24 +421,24 @@ Wie gross ist das 95\%-Konfidenzintervall für die Differenz der Mittelwerte?
 \end{beamerboxesrounded}
 \end{frame}
 
-\begin{frame}{KI für Differenz zweier Wahrscheinlichkeiten mit \texttt{Stats}}
-\begin{beamerboxesrounded}[shadow]{Aufgabe 4, Serie 10}
-\small{In einer Studie wird ein neues alternatives Medikament gegen eine bestimmte Krankheit
-untersucht. Es nehmen 500 Personen, die an einer Krankheit leiden, an der Studie teil.
-Von diesen Personen werden 300 zufällig ausgewählt. Sie bekommen das neue Medikament
-verabreicht. Die verbleibenden 200 Personen bilden die Kontrollgruppe, d.h. sie nehmen
-weiterhin ein herkömmliches Medikament ein. Nach einem Jahr wird kontrolliert, wie sich
-der Gesundheitszustand der Teilnehmer verändert hat. In der ersten Gruppe stellen wir
-fest, dass sich der Gesundheitszustand bei 201 Personen verbessert hat und bei den 
-verbleibenden 99 gleich geblieben ist oder sich gar verschlechtert hat. Bei der Kontrollgruppe
-hat sich der Gesundheitszustand bei 121 Personen verbessert, und bei den restlichen 79
-Leuten ist er gleich geblieben oder hat sich verschlechtert. Mit $p_1$ bezeichnen wir die
-Wahrscheinlichkeit der Verbesserung des Gesundheitszustandes (innerhalb eines Jahres)
-einer Person der ersten Gruppe und mit $p_2$ die entsprechende Wahrscheinlichkeit für
-eine Person in der zweiten Gruppe. Bestimmen Sie das 95\%-Konfidenzintervall der Differenz.}
-\end{beamerboxesrounded}
-\end{frame}
-
+%\begin{frame}{KI für Differenz zweier Wahrscheinlichkeiten mit \texttt{Stats}}
+%\begin{beamerboxesrounded}[shadow]{Aufgabe 4, Serie 10}
+%\small{In einer Studie wird ein neues alternatives Medikament gegen eine bestimmte Krankheit
+%untersucht. Es nehmen 500 Personen, die an einer Krankheit leiden, an der Studie teil.
+%Von diesen Personen werden 300 zufällig ausgewählt. Sie bekommen das neue Medikament
+%verabreicht. Die verbleibenden 200 Personen bilden die Kontrollgruppe, d.h. sie nehmen
+%weiterhin ein herkömmliches Medikament ein. Nach einem Jahr wird kontrolliert, wie sich
+%der Gesundheitszustand der Teilnehmer verändert hat. In der ersten Gruppe stellen wir
+%fest, dass sich der Gesundheitszustand bei 201 Personen verbessert hat und bei den 
+%verbleibenden 99 gleich geblieben ist oder sich gar verschlechtert hat. Bei der Kontrollgruppe
+%hat sich der Gesundheitszustand bei 121 Personen verbessert, und bei den restlichen 79
+%Leuten ist er gleich geblieben oder hat sich verschlechtert. Mit $p_1$ bezeichnen wir die
+%Wahrscheinlichkeit der Verbesserung des Gesundheitszustandes (innerhalb eines Jahres)
+%einer Person der ersten Gruppe und mit $p_2$ die entsprechende Wahrscheinlichkeit für
+%eine Person in der zweiten Gruppe. Bestimmen Sie das 95\%-Konfidenzintervall der Differenz.}
+%\end{beamerboxesrounded}
+%\end{frame}
+%
 \section{ANOVA}
 \begin{frame}{Übersicht}
 \begin{itemize}
@@ -491,7 +477,7 @@ vermessen wir vier Fische und notieren die erhaltenen Werte (in g)
 \vspace{2mm}\begin{center}{\scriptsize\begin{tabular}{ccc}\toprule
 See 1 & See 2 & See 3\\\midrule
 132 & 172 & 153\\
-160 & 163 & 162\\
+169 & 163 & 162\\
 158 & 161 & 151\\
 164 & 149 & 158\\
 \bottomrule
